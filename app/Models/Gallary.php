@@ -9,13 +9,18 @@ use Illuminate\Notifications\Notifiable;
 
 class Gallary extends Authenticatable
 {
-    protected $table ='gallary';
+    protected $table = 'gallary';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'image'
+        'image', 'category_id'
     ];
+
+    public function category()
+    {
+        return $this->hasOne('\App\Models\GalleryCategory', 'id', 'category_id');
+    }
 }

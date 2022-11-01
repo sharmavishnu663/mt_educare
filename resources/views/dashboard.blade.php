@@ -17,7 +17,7 @@
         </div>
 
         <!--Chat body-->
-        <div class="offcanvas-body p-0 flex-row-fluid">
+        {{-- <div class="offcanvas-body p-0 flex-row-fluid">
             <div class="d-flex p-3 flex-column-reverse h-100" style="overflow-y: auto;">
                 <div class="flex-shrink-0 w-100">
 
@@ -391,7 +391,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!--Chat footer-->
         <div class="offcanvas-footer mt-auto p-2 border-top shadow position-relative">
             <div class="position-relative p-4">
@@ -425,7 +425,7 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-7 text-md-end">
+                {{-- <div class="col-md-7 text-md-end">
                     <div class="d-flex justify-content-md-end align-items-center">
                         <div id="reportrange" class="btn btn-gray">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -436,14 +436,14 @@
                             <span class="small d-inline-block ms-1"></span>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
     <!--//Page Toolbar End//-->
 
     <!--//Page content//-->
-    <div class="content p-4 pb-0 d-flex flex-column-fluid position-relative">
+    {{-- <div class="content p-4 pb-0 d-flex flex-column-fluid position-relative">
         <div class="container-fluid px-0">
             <div class="row">
                 <div class="col-12 col-xl-3 col-sm-6 mb-4">
@@ -529,7 +529,7 @@
             <!--row-->
 
         </div>
-    </div>
+    </div> --}}
     <!--//Page content End//-->
 
     <!--//Page-footer//-->

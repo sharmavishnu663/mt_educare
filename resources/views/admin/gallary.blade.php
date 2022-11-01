@@ -43,6 +43,7 @@
                                         <table id="datatable" class="table mt-0 table-striped table-card table-nowrap">
                                             <thead class="text-uppercase small text-muted">
                                                 <tr>
+                                                    <th>Category</th>
                                                     <th>Image</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -50,6 +51,7 @@
                                             <tbody>
                                                 @foreach ($gallaries as $gallary)
                                                     <tr>
+                                                        <td>{{ $gallary->category ? $gallary->category->name : '' }}</td>
                                                         <td><img src="{{ asset('storage/' . $gallary->image) }}"
                                                                 class="avatar lg rounded-circle me-2 mb-2" alt="">
                                                         </td>
@@ -57,6 +59,7 @@
                                                         <td> <a class="js-edit-logo" data-bs-toggle="modal"
                                                                 href="#editModal" style="cursor:pointer" title="edit state"
                                                                 data-id="{{ @$gallary->id }}"
+                                                                data-category_id="{{ @$gallary->category_id }}"
                                                                 data-image="{{ asset('storage/' . $gallary->image) }}"><i
                                                                     class="fa fa-edit"></i></a>
                                                             <a class="delete-material"
@@ -95,11 +98,21 @@
                             <div class="modal-body">
                                 <div class="card-body">
 
+                                    <label for="maskPhone" class="form-label">Gallery Category</label>
+                                    <select class="form-control mb-2" name="category_id" required>
+                                        <option disabled selected> Please select Category</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+
+
                                     {{-- <input class="form-control form-control-lg mb-2" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example"> --}}
 
                                     <h6>File Input</h6>
                                     <div class="mb-0">
-                                        <input class="form-control" type="file" name="image" required>
+                                        <input class="form-control" type="file" name="image"
+                                            accept="image/png, image/gif, image/jpeg" required>
                                     </div>
 
                                 </div>
@@ -130,12 +143,19 @@
                                 <div class="card-body">
                                     <input type="hidden" name="gallary_id" id="gallary_id">
                                     {{-- <input class="form-control form-control-lg mb-2" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example"> --}}
-
+                                    <label for="maskPhone" class="form-label">Gallery Category</label>
+                                    <select class="form-control mb-2" name="category_id" id="category_id" required>
+                                        <option disabled selected> Please select Category</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
                                     <h6>File Input</h6>
                                     <div class="mb-0">
-                                        <input class="form-control" type="file" name="image" id="formFile" required>
+                                        <input class="form-control" type="file" name="image"
+                                            accept="image/png, image/gif, image/jpeg" id="formFile">
                                     </div>
-                                    <img src="" id="gallary_image">
+                                    <img src="" id="gallary_image" width="25%">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -157,8 +177,11 @@
         $(".js-edit-logo").on('click', function(e) {
             var id = $(this).attr('data-id');
             var image = $(this).attr('data-image');
+            var category_id = $(this).attr('data-category_id');
 
             $("#editModal .modal-dialog #gallary_id").val(id);
+            $('#editModal .modal-dialog #category_id option[value="' + category_id + '"]').attr("selected",
+                "selected");
             $("#editModal .modal-dialog #gallary_image").attr("src", image);
 
         });

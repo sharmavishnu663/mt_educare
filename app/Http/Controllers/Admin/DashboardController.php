@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Gallary;
+use App\Models\GalleryCategory;
 use Response;
 
 class DashboardController extends Controller
@@ -37,17 +38,73 @@ class DashboardController extends Controller
         return view('dashboard', compact('user'));
     }
 
+
+    // Gallert Category start
+    public function galleryCategory(Request $request)
+    {
+        $categories = GalleryCategory::all();
+        return view('admin.gallery_category', compact('categories'));
+    }
+
+    public function addGalleryCategory(Request $request)
+    {
+        $rules = [
+            'name' =>  'required'
+        ];
+
+        $requestData = $request->all();
+        $validator = Validator::make($requestData, $rules);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        GalleryCategory::create($requestData);
+        return Redirect::route('admin.gallery.category')->with('success', 'Gallery Category added successfully!');
+    }
+
+
+    public function editGalleryCategory(Request $request)
+    {
+        $rules = [
+            'id' => 'required',
+            'name' =>  'required'
+        ];
+
+        $requestData = $request->all();
+        $validator = Validator::make($requestData, $rules);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        } else {
+
+            $investor = GalleryCategory::find($request->id);
+            unset($requestData['_token']);
+            $contactAdd = GalleryCategory::where('id', $investor->id)->update($requestData);
+
+            return Redirect::route('admin.gallery.category')->with('success', 'Gallery Category update successfully!');
+        }
+    }
+
+    public function deleteGalleryCategory($id)
+    {
+        GalleryCategory::where('id', $id)->delete();
+        return Redirect::route('admin.gallery.category')->with('success', 'Gallery Category deleted successfully!');
+    }
+
     public function gallary()
     {
         $user = Auth::user();
-        $gallaries = Gallary::all();
-        return view('admin.gallary', compact('user', 'gallaries'));
+        $gallaries = Gallary::with('category')->get();
+        $categories = GalleryCategory::all();
+        return view('admin.gallary', compact('user', 'gallaries', 'categories'));
     }
 
     public function addGallary(Request $request)
     {
         $rules = [
             'image' =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required'
         ];
 
         $requestData = $request->all();
@@ -75,7 +132,8 @@ class DashboardController extends Controller
     {
         $rules = [
             'gallary_id' => 'required',
-            'image' =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required',
+            // 'image' =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
 
         $requestData = $request->all();
@@ -90,14 +148,11 @@ class DashboardController extends Controller
                 $profileImage = $request->file('image');
                 $profileName = time() . 'gallary.' . $profileImage->getClientOriginalExtension();
                 Storage::disk('public')->put($profileName,  File::get($profileImage));
-                $gallary->image =  $profileName;
-                $gallary->save();
+                $requestData['image'] =  $profileName;
             }
-            // $path = Storage::disk('s3')->put('images', $request->image);
-
-            // $path = Storage::disk('s3')->url($path);
-
-            //     dd($path);
+            unset($requestData['_token']);
+            unset($requestData['gallary_id']);
+            Gallary::where('id', $gallary->id)->update($requestData);
             return Redirect::route('admin.gallary')->with('success', 'Gallary update successfully!');
         }
     }
