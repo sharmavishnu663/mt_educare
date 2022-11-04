@@ -8,12 +8,12 @@
 @section('content')
     @if ($message = Session::get('success'))
         <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
+
             <strong>{{ $message }}</strong>
         </div>
     @elseif ($error = Session::get('error'))
         <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
+
             <strong>{{ $error }}</strong>
         </div>
     @endif

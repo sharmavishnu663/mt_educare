@@ -4,13 +4,13 @@
 @section('content')
     @if ($message = Session::get('success'))
         <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
+
             <strong>{{ $message }}</strong>
         </div>
     @endif
     @if ($errors->any())
         <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
+
             <strong>{{ $errors->first() }}</strong>
         </div>
     @endif
@@ -185,7 +185,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel">Edit Terms & Conditions
+                            <h5 class="modal-title" id="exampleModalToggleLabel">Edit Center
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
@@ -195,7 +195,7 @@
                             @csrf
                             <input type="hidden" name="id" id="center_id">
                             <div class="modal-body">
-                                <div class="modal-body">
+                                <div class="card-body">
 
                                     <div class="form-group">
                                         <label for="name">Center Name</label>

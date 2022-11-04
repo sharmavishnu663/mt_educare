@@ -4,13 +4,13 @@
 @section('content')
     @if ($message = Session::get('success'))
         <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
+
             <strong>{{ $message }}</strong>
         </div>
     @endif
     @if ($errors->any())
         <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
+
             <strong>{{ $errors->first() }}</strong>
         </div>
     @endif
@@ -177,7 +177,7 @@
 
                                 <label for="maskPhone" class="form-label">Candidate Profile</label>
                                 <textarea class="form-control mb-2" name="candidate_profile" id="candidate_profile" required>
-                                   
+
                                 </textarea>
 
                                 <label for="maskPhone" class="form-label">Description</label>

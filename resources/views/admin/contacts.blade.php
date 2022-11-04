@@ -4,12 +4,13 @@
 @section('content')
     @if ($message = Session::get('success'))
         <div class="alert alert-success alert-block">
-
             <strong>{{ $message }}</strong>
         </div>
     @endif
     @if ($errors->any())
-        <h4 class="error-msg">{{ $errors->first() }}</h4>
+        <div class="alert alert-danger alert-block">
+            <strong>{{ $errors->first() }}</strong>
+        </div>
     @endif
     <div class="content-wrapper" style="min-height: 1244.06px;">
         <!--//Page Toolbar//-->
@@ -17,17 +18,16 @@
             <div class="position-relative container-fluid px-0">
                 <div class="row align-items-center position-relative">
                     <div class="col-md-8 mb-4 mb-md-0">
-                        <h3 class="mb-2">Privacy Policy</h3>
-
+                        <h3 class="mb-2">Contact</h3>
+                    </div>
+                    @if(!$contact)
+                    <div class="card-tools">
+                        <button class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
+                            style="float: right">Add Contacts</button>
 
                     </div>
-                    @if (!$policy)
-                        <div class="card-tools">
-                            <button class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
-                                style="float: right">Add Privacy Policy</button>
-
-                        </div>
                     @endif
+
                 </div>
             </div>
         </div>
@@ -45,30 +45,35 @@
                                         <table id="datatable" class="table mt-0 table-striped table-card table-nowrap">
                                             <thead class="text-uppercase small text-muted">
                                                 <tr>
-                                                    <th>Decriptions</th>
+                                                    <th>Robomate Enquiry</th>
+                                                    <th>Product Enquiry</th>
+                                                    <th>Franchise Enquiry</th>
                                                     <th>Action</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if ($policy)
+                                                @if ($contact)
                                                     <tr>
-                                                        <td>{{ substr($policy->description, 0, 100) }}
+                                                        <td>{{ $contact->robomate_enquiry }}
+                                                        </td>
+                                                        <td>{{ $contact->product_enquiry }}
+                                                        </td>
+                                                        <td>{{ $contact->franchise_enquiry }}
                                                         </td>
 
                                                         <td> <a class="js-edit-logo" data-bs-toggle="modal"
                                                                 href="#editModal" style="cursor:pointer" title="edit state"
-                                                                data-id="{{ @$policy->id }}"
-                                                                data-description="{{ @$policy->description }}"><i
+                                                                data-id="{{ @$contact->id }}"
+                                                                data-robomate_enquiry="{{ @$contact->robomate_enquiry }}"
+                                                                data-product_enquiry="{{ @$contact->product_enquiry }}"
+                                                                data-franchise_enquiry="{{ @$contact->franchise_enquiry }}"><i
                                                                     class="fa fa-edit"></i></a>
-                                                            {{-- <a class="delete-material"
-                                                        href="{{ route('delete.office', @$gallary->id) }}"
-                                                        data-id="{{ @$office->id }}" title="delete logo"
-                                                        onClick="return  confirm('Are you sure you want to delete ?')"><i
-                                                            class="fa fa-trash-alt"></i></a> --}}
+
                                                         </td>
                                                     </tr>
-                                                @endif
 
+                                               @endif
 
                                             </tbody>
                                         </table>
@@ -86,26 +91,23 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel">Privacy Policy
+                            <h5 class="modal-title" id="exampleModalToggleLabel">Add Contact
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.policy') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.contact') }}" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
+                                <label for="maskPhone" class="form-label">Robomate Enquiry Number</label>
+                                <input class="form-control mb-2" type="phone" placeholder="Robomate Enquiry Number" name="robomate_enquiry" required>
 
-                                {{-- <input class="form-control form-control-lg mb-2" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example"> --}}
-                                <div class="row pb-5">
-                                    <div class="col-12">
-                                    </div>
-                                    <div class="col-12 col-md-12 mb-5">
-                                        <textarea name="description" cols="100" rows="10" required></textarea>
+                                <label for="maskPhone" class="form-label">Product Enquiry Number</label>
+                                <input class="form-control mb-2" type="phone" placeholder="Product Enquiry Number" name="product_enquiry" required>
 
-                                        <!--Quill editor-->
+                                <label for="maskPhone" class="form-label">Franchise Enquiry Number</label>
+                                <input class="form-control mb-2" type="phone" placeholder="Franchise Enquiry Number" name="franchise_enquiry" required>
 
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="modal-footer">
@@ -123,25 +125,28 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel">Edit Privacy Policy
+                            <h5 class="modal-title" id="exampleModalToggleLabel">Edit Contact
                             </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.edit.policy') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.update.contact') }}" method="post" enctype="multipart/form-data">
 
                             @csrf
-                            <input type="hidden" name="policy_id" id="policy_id">
+                            <input type="hidden" name="id" id="contactid">
                             <div class="modal-body">
-                                <div class="row pb-5">
-                                    <div class="col-12">
-                                    </div>
-                                    <div class="col-12 col-md-12 mb-5">
-                                        <textarea name="description" cols="100" rows="10" id="description_policy" required></textarea>
+                                <label for="maskPhone" class="form-label">Robomate Enquiry Number</label>
+                                <input class="form-control mb-2" type="phone" placeholder="Robomate Enquiry Number" name="robomate_enquiry"
+                                    id="robomate_enquiry" required>
 
-                                        <!--Quill editor-->
+                                    <label for="maskPhone" class="form-label">Product Enquiry Number</label>
+                                    <input class="form-control mb-2" type="phone" placeholder="Product Enquiry Number" name="product_enquiry"
+                                        id="product_enquiry" required>
 
-                                    </div>
-                                </div>
+                                        <label for="maskPhone" class="form-label">Franchise Enquiry Number</label>
+                                <input class="form-control mb-2" type="phone" placeholder="title" name="franchise_enquiry"
+                                    id="franchise_enquiry" required>
+
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit">Submit</button>
@@ -161,10 +166,17 @@
     <script>
         $(".js-edit-logo").on('click', function(e) {
             var id = $(this).attr('data-id');
-            var description = $(this).attr('data-description');
+            var robomate_enquiry = $(this).attr('data-robomate_enquiry');
+            var product_enquiry = $(this).attr('data-product_enquiry');
+            var franchise_enquiry = $(this).attr('data-franchise_enquiry');
 
-            $("#editModal .modal-dialog #policy_id").val(id);
-            $("#editModal .modal-dialog #description_policy").text(description);
+            $("#editModal .modal-dialog #contactid").val(id);
+            $("#editModal .modal-dialog #robomate_enquiry").val(robomate_enquiry);
+            $("#editModal .modal-dialog #product_enquiry").val(product_enquiry);
+            $("#editModal .modal-dialog #franchise_enquiry").val(franchise_enquiry);
+
+
+
 
         });
     </script>

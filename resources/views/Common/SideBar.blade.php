@@ -70,6 +70,8 @@
                             <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.demoVideo') }}">
                                     Standard
                                     Videos</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.subjects') }}">
+                                      Subjects</a></li>
 
                         </ul>
                     </li>
@@ -359,6 +361,17 @@
                                     href="{{ route('admin.report') }}">Reports</a>
                             </li>
                         </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('admin.contacts') }}" data-bs-toggle="" aria-expanded="false"
+                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.contacts' ? 'active' : '' }}">
+                            <span class="sidebar-icon">
+                                <i class="fa fa-solid fa-address-book"></i>
+                            </span>
+                            <!--Sidebar nav text-->
+                            <span class="sidebar-text">Contacts</span>
+                        </a>
                     </li>
 
                 </ul>

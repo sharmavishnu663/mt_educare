@@ -23,7 +23,7 @@ class CenterController extends Controller
         $user = Auth::user();
         $states = State::all();
         $centers = Center::with(['state', 'city'])->get();
-        // dd($courseType);
+
         return view('admin.centers', compact('user', 'centers', 'states'));
     }
 

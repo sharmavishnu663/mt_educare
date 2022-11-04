@@ -48,6 +48,14 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/edit/demo-video', '\App\Http\Controllers\Admin\DemoVideoController@updateDemoVideo')->name('admin.edit.demoVideo');
     Route::get('delete-demo-video/{id}', '\App\Http\Controllers\Admin\DemoVideoController@deleteDemoVideo')->name('admin.delete.demoVideo');
 
+    // subject route
+
+    Route::get('subject-list', '\App\Http\Controllers\Admin\SubjectController@index')->name('admin.subjects');
+    Route::post('add-subject', '\App\Http\Controllers\Admin\SubjectController@addSubject')->name('admin.add.subject');
+    Route::post('update-subject', '\App\Http\Controllers\Admin\SubjectController@updateSubject')->name('admin.update.subject');
+    Route::get('delete-subject/{id}', '\App\Http\Controllers\Admin\SubjectController@deleteSubject')->name('delete.subject');
+    Route::post('course-standard', '\App\Http\Controllers\Admin\SubjectController@courseStandard')->name('course.standard');
+    Route::post('standard-board', '\App\Http\Controllers\Admin\SubjectController@standardBoard')->name('standard.board');
     // State route
 
     Route::get('state-list', '\App\Http\Controllers\Admin\StateController@index')->name('admin.states');
@@ -255,6 +263,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/add/reports', 'App\Http\Controllers\Admin\ReportController@addReports')->name('admin.add.report');
     Route::post('/edit/reports', '\App\Http\Controllers\Admin\ReportController@editReports')->name('admin.edit.report');
     Route::get('delete-reports/{id}', '\App\Http\Controllers\Admin\ReportController@deleteReports')->name('delete.report');
+
+    // contact route
+    Route::get('/contact', '\App\Http\Controllers\Admin\ContactUsController@index')->name('admin.contacts');
+    Route::post('/add/contact', '\App\Http\Controllers\Admin\ContactUsController@addContact')->name('admin.add.contact');
+    Route::post('/edit/contact', '\App\Http\Controllers\Admin\ContactUsController@updateContact')->name('admin.update.contact');
 
     Route::get('/logout', '\App\Http\Controllers\Admin\DashboardController@logout')->name('logout');
 });

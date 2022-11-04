@@ -279,7 +279,7 @@
             var tag_name = $(this).attr('data-tag_name');
             var video_url = $(this).attr('data-video_url');
             // var video_name = $(this).attr('data-video_name');
-            alert(video_url)
+
 
             $("#editModal .modal-dialog #standardID").val(id);
             $("#editModal .modal-dialog #title").val(title);
