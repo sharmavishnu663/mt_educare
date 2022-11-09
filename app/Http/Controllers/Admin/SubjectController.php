@@ -44,7 +44,6 @@ class SubjectController extends Controller
         $validator = Validator::make($requestData, $rules);
 
         if ($validator->fails()) {
-
             return back()->withErrors($validator)->withInput();
         } else {
             // $standard = ClassCategory::find($request->classCategory_id);
