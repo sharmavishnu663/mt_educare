@@ -96,6 +96,7 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $gallaries = Gallary::with('category')->get();
+
         $categories = GalleryCategory::all();
         return view('admin.gallary', compact('user', 'gallaries', 'categories'));
     }
@@ -166,6 +167,6 @@ class DashboardController extends Controller
     public function logout()
     {
         $user = Auth::logout();
-        return redirect()->back();
+        return redirect()->route('admin.showlogin');
     }
 }

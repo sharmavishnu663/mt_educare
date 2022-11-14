@@ -4,12 +4,15 @@
 @section('content')
     @if ($message = Session::get('success'))
         <div class="alert alert-success alert-block">
-
+            <button type="button" class="close" data-dismiss="alert">×</button>
             <strong>{{ $message }}</strong>
         </div>
     @endif
     @if ($errors->any())
-        <h4 class="error-msg">{{ $errors->first() }}</h4>
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $errors->first() }}</strong>
+        </div>
     @endif
     <div class="content-wrapper" style="min-height: 1244.06px;">
         <!--//Page Toolbar//-->
@@ -17,20 +20,21 @@
             <div class="position-relative container-fluid px-0">
                 <div class="row align-items-center position-relative">
                     <div class="col-md-8 mb-4 mb-md-0">
-                        <h3 class="mb-2">Subject</h3>
-
-
+                        <h3 class="mb-2">Subjects</h3>
                     </div>
+
                     <div class="card-tools">
                         <button class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
                             style="float: right">Add Subject</button>
 
                     </div>
+
                 </div>
             </div>
         </div>
         <!--//Page Toolbar End//-->
         <!-- Main content -->
+        {{-- List of Centers start --}}
         <section class="content">
             <div class="row">
                 <div class="content p-4 d-flex flex-column-fluid">
@@ -43,7 +47,7 @@
                                         <table id="datatable" class="table mt-0 table-striped table-card table-nowrap">
                                             <thead class="text-uppercase small text-muted">
                                                 <tr>
-                                                     <th>Category</th>
+                                                    <th>Category</th>
                                                     <th>Standard</th>
                                                     <th>Board </th>
                                                     <th>Name</th>
@@ -53,34 +57,33 @@
                                             <tbody>
                                                 @foreach ($subjects as $subject)
                                                     <tr>
-                                                       <td>
-                                                            {{ $subject->courseType->name }}
+                                                        <td>
+                                                            {{ $subject->courseType ? $subject->courseType->name : '' }}
                                                         </td>
                                                         <td>
                                                             {{ $subject->classCategory->name }}
                                                         </td>
                                                         <td>
-                                                            {{ $subject->classCategory->board_name }}
+                                                            {{ $subject->board_name }}
                                                         </td>
                                                         <td>{{ @$subject->name }}</td>
 
-                                                          <td> <a class="js-edit-logo" data-bs-toggle="modal"
+                                                        <td> <a class="js-edit-logo" data-bs-toggle="modal"
                                                                 href="#editModal" style="cursor:pointer"
-                                                                title="edit subject" data-id="{{ @$subject->id }}"
-                                                                data-courseType = "{{ $subject->courseType->name }}"
-                                                                data-standard_name = " {{ $subject->classCategory->name }}"
-                                                                data-board_name="{{ $subject->classCategory->board_name }}"
+                                                                title="edit subject" data-id="{{ $subject->id }}"
+                                                                data-course="{{ $subject->courseType ? $subject->courseType->id : '' }}"
+                                                                data-class_id="{{ $subject->classCategory->name }}"
+                                                                data-board_name="{{ $subject->board_name }}"
                                                                 data-name="{{ $subject->name }}"><i
                                                                     class="fa fa-edit"></i></a>
                                                             <a class="delete-material"
                                                                 href="{{ route('delete.subject', @$subject->id) }}"
-                                                                title="delete standard"
+                                                                title="delete subject"
                                                                 onClick="return  confirm('Are you sure you want to delete ?')"><i
                                                                     class="fa fa-trash-alt"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
-
 
 
                                             </tbody>
@@ -94,9 +97,14 @@
                 <!-- /.col-->
             </div>
 
+
+            {{-- List of centers End --}}
+
+            {{-- Add Center Modal start --}}
+
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
                 tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalToggleLabel">Add Subject
@@ -107,33 +115,36 @@
 
                             @csrf
                             <div class="modal-body">
-                                <div class="card-body">
-
-                                    <label for="maskPhone" class="form-label">Category</label>
-                                    <select class="form-control mb-2 js-change-category" name="course_id"  required>
+                                <div class="form-group">
+                                    <label for="name">Category</label>
+                                    <select class="form-control mb-2 js-change-category" name="classCategory_id" required>
                                         @foreach ($courses as $course)
                                             <option value="{{ $course->id }}">{{ $course->name }} </option>
                                         @endforeach
                                     </select>
+                                </div>
 
-                                    <label for="maskPhone" class="form-label">Standard</label>
-                                    <select class="form-control mb-2 js-change-standard" name="standard_id"  required>
+                                <div class="form-group">
+                                    <label for="email-1">Standard</label>
+                                    <select class="form-control mb-2 js-change-standard" name="course_id" required>
 
                                     </select>
-                                    <label for="maskPhone" class="form-label">Board</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email-1">Board</label>
                                     <select class="form-control mb-2 js-change-board" name="board_name" required>
 
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email-1">Name</label>
 
-
-                                    <label for="maskPhone" class="form-label">Name</label>
                                     <input class="form-control mb-2" type="text" placeholder="name" name="name"
                                         required>
-
-
-
                                 </div>
+
                             </div>
+
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit">Submit</button>
                             </div>
@@ -142,28 +153,30 @@
                 </div>
             </div>
 
+            {{-- Add Modal End  --}}
 
+            {{-- Edit Modal Start --}}
 
             <div class="modal fade" id="editModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
                 tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalToggleLabel">Edit Subject
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.update.subject') }}" method="post"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('admin.update.subject') }}" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <input type="hidden" name="id" id="subject_id">
                             <div class="modal-body">
+                                <div class="modal-body">
 
-                                <div class="card-body">
                                     <div class="form-group">
-                                        <label for="email-1">Category</label>
-                                        <select name="course_id" id="course_id" class="form-control js-change-category" required>
+                                        <label for="name">Category</label>
+                                        <select name="classCategory_id" id="category_id"
+                                            class="form-control js-change-category" required>
                                             <option>Select Category</option>
                                             @foreach ($courses as $course)
                                                 <option value="{{ $course->id }}">
@@ -172,25 +185,27 @@
                                             @endforeach
                                         </select>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="email-1">Standard</label>
-                                        <select name="standard_id" id="standard_id" class="form-control js-change-standard" required>
+                                        <select name="course_id" id="standard_id" class="form-control js-change-standard"
+                                            required>
 
                                         </select>
                                     </div>
-
                                     <div class="form-group">
                                         <label for="email-1">Board</label>
-                                        <select name="board" id="board_id" class="form-control js-change-board" required>
+                                        <select name="board_name" id="board_id" class="form-control js-change-board"
+                                            required>
 
                                         </select>
                                     </div>
-
                                     <div class="form-group">
                                         <label for="email-1">Name</label>
-                                        <input type="text" id="name" class="form-control"
-                                             name="name" value="{{ old('name') }}" required>
+                                        <input type="text" id="name" class="form-control" name="name"
+                                            value="{{ old('name') }}" required>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -200,40 +215,38 @@
                     </div>
                 </div>
             </div>
+            {{-- Edit Modal End --}}
 
 
 
         </section>
-        <!-- /.content -->
     </div>
     <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
 
+    {{-- Edit Modal Scriptiing start --}}
     <script>
         $(".js-edit-logo").on('click', function(e) {
             var id = $(this).attr('data-id');
-            var courseType = $(this).attr('data-courseType');
-            var classCategory_name = $(this).attr('data-standard_name');
+            var course = $(this).attr('data-course');
+            var class_id = $(this).attr('data-class_id');
             var board_name = $(this).attr('data-board_name');
-            var name = $(this).attr('name');
-            getStandard(course_id);
-            getboard(standard_id);
-
-
+            var name = $(this).attr('data-name');
 
             $("#editModal .modal-dialog #subject_id").val(id);
-            $('#editModal .modal-dialog #course_id option[value="' + courseType + '"]').attr("selected",
+            $("#editModal .modal-dialog #name").val(name);
+            $("#editModal .modal-dialog #standard_id").append(`<option value="${class_id}">
+                                       ${class_id}
+                                  </option>`);
+            $("#editModal .modal-dialog #board_id").append(`<option value="${board_name}">
+                                       ${board_name}
+                                  </option>`);
+            $('#editModal .modal-dialog #category_id option[value="' + course + '"]').attr("selected",
                 "selected");
-            $('#editModal .modal-dialog #standard_id option[value="' + classCategory_name + '"]').attr("selected",
-                "selected");
-            $('#editModal .modal-dialog #board option[value="' + board_name + '"]').attr("selected",
-                "selected");
-             $("#editModal .modal-dialog #name").val(name);
 
 
         });
-    </script>
+        // On Chage on start start
 
-    <script>
         $('.js-change-category').on('change', function() {
             var that = $(this).val();
             getStandard(that);
@@ -259,7 +272,7 @@
                 success: function(result) {
                     $('.js-change-standard').html('');
                     $('.js-change-standard').html(result.data);
-                   console.log(result.data);
+                    console.log(result.data);
                 }
             });
 
@@ -278,13 +291,13 @@
                 success: function(result) {
                     $('.js-change-board').html('');
                     $('.js-change-board').html(result.data);
-                   console.log(result.data);
+                    console.log(result.data);
                 }
             });
 
         }
     </script>
-
+    {{-- it's use for only numeric value --}}
     <script>
         $(".allow_numeric").on("input", function(evt) {
             var self = $(this);

@@ -60,4 +60,27 @@ Route::get('job-data-list/{id}', '\App\Http\Controllers\Api\APIController@jobDat
 Route::post('enquiry-post', '\App\Http\Controllers\Api\APIController@enquiryForm')->name('enquiy.post');
 
 
-Route::post('email-Subscription', '\App\Http\Controllers\Api\APIController@emailSubscription')->name('email.subscription');
+Route::get('category-list', '\App\Http\Controllers\Api\APIController@categoryList')->name('category.list');
+
+Route::get('category-details/{id}', '\App\Http\Controllers\Api\APIController@categoryDetail')->name('category.detail');
+
+Route::get('demo-video-category', '\App\Http\Controllers\Api\APIController@demoVideoCategory')->name('demo.video.category');
+
+Route::get('demo-video-detail/{id}', '\App\Http\Controllers\Api\APIController@demoVideoDetails')->name('demo.video.detail');
+
+Route::get('topper-list', '\App\Http\Controllers\Api\APIController@topperList')->name('topper.list');
+
+Route::get('our-achivement', '\App\Http\Controllers\Api\APIController@ourAchivementList')->name('our.achivement');
+
+Route::get('category-boards-standards/{id}', '\App\Http\Controllers\Api\APIController@categoryBoardStandards')->name('category.baord.standards');
+
+Route::get('city-list', '\App\Http\Controllers\Api\APIController@cityList')->name('city.list');
+
+Route::get('area-data/{id}', '\App\Http\Controllers\Api\APIController@areaData')->name('area.data');
+Route::post('center-search', '\App\Http\Controllers\Api\APIController@centerSearch')->name('center.search');
+
+Route::post('users-query', '\App\Http\Controllers\Api\APIController@usersQuery')->name('users.query');
+Route::get('media-list', '\App\Http\Controllers\Api\APIController@mediaList')->name('media.list');
+
+
+Route::post('email-subscription', '\App\Http\Controllers\Api\APIController@emailSubscription')->name('email.subscription');

@@ -182,9 +182,6 @@
             $("#editModal .modal-dialog #date").val(date);
             $("#editModal .modal-dialog #description").val(description);
 
-
-
-
         });
     </script>
 @endsection

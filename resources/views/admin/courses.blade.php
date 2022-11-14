@@ -22,11 +22,13 @@
                     <div class="col-md-8 mb-4 mb-md-0">
                         <h3 class="mb-2">Course</h3>
                     </div>
-                    <div class="card-tools">
-                        <button class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
-                            style="float: right">Add Course</button>
+                    @if (count($courses) < 3)
+                        <div class="card-tools">
+                            <button class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
+                                style="float: right">Add Course</button>
 
-                    </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

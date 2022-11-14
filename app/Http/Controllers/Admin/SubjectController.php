@@ -22,6 +22,7 @@ class SubjectController extends Controller
     {
         $courses = CourseType::all();
         $subjects = Subject::all();
+        // dd($subjects);
         return view('admin.subjects', compact('courses', 'subjects'));
     }
 
@@ -47,6 +48,7 @@ class SubjectController extends Controller
 
             return back()->withErrors($validator)->withInput();
         } else {
+            // dd($requestData);
             // $standard = ClassCategory::find($request->classCategory_id);
             // $requestData['classCategory_id'] = $standard;
             $success = Subject::create($requestData);
@@ -70,6 +72,11 @@ class SubjectController extends Controller
             return back()->withErrors($validator)->withInput();
         } else {
             unset($requestData['_token']);
+            $standard = CourseType::find($request->classCategory_id);
+            if ($standard) {
+                $requestData['classCategory_id'] = $standard->id;
+            }
+            // dd($requestData);
             Subject::where('id', $request->id)->update($requestData);
             return Redirect::route('admin.subjects')->with('success', 'Subjects updated successfully!');
         }

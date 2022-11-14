@@ -269,5 +269,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/add/contact', '\App\Http\Controllers\Admin\ContactUsController@addContact')->name('admin.add.contact');
     Route::post('/edit/contact', '\App\Http\Controllers\Admin\ContactUsController@updateContact')->name('admin.update.contact');
 
-    Route::get('/logout', '\App\Http\Controllers\Admin\DashboardController@logout')->name('logout');
+    Route::get('logout', '\App\Http\Controllers\Admin\DashboardController@logout')->name('logout');
 });
