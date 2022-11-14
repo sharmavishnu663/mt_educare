@@ -26,7 +26,7 @@ class StateController extends Controller
     public function addState(Request $request)
     {
         $rules = [
-            'name' => 'required',
+            'name' => 'required||regex:/^[\pL\s\-]+$/u|',
         ];
 
         $requestData = $request->all();
@@ -44,7 +44,7 @@ class StateController extends Controller
     public function updateState(Request $request)
     {
         $rules = [
-            'name' => 'required',
+            'name' => 'required||regex:/^[\pL\s\-]+$/u|',
 
         ];
 

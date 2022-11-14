@@ -113,19 +113,19 @@
                                 <div class="card-body">
                                     <div class="form-group mb-1">
                                         <label for="email-1">Name</label>
-                                        <input type="text" class="form-control" name="name" placeholder="title"
+                                        <input type="text" class="form-control" name="name" placeholder="Name"
                                             required>
                                     </div>
 
                                     <div class="form-group mb-1">
                                         <label for="email-1">Percentage</label>
-                                        <input type="text" class="form-control" name="percentage" placeholder="percenatge"
+                                        <input type="text" class="form-control" name="percentage" placeholder="Percentage"
                                             required>
                                     </div>
 
                                     <div class="form-group mb-1">
                                         <label for="email-1">Description</label>
-                                        <textarea type="text" class="form-control" name="description" placeholder="description" required> </textarea>
+                                        <textarea class="form-control" name="description" placeholder="description" required></textarea>
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Image</label>
@@ -191,8 +191,7 @@
 
                                     <div class="form-group mb-1">
                                         <label for="email-1">Description</label>
-                                        <textarea type="text" class="form-control" name="description" id="description" placeholder="description"
-                                            required> </textarea>
+                                        <textarea type="text" class="form-control" name="description" id="description" placeholder="description" required></textarea>
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Image</label>

@@ -30,7 +30,7 @@ class TopperController extends Controller
         $rules = [
             'name' => 'required',
             'description' => 'required',
-            'percentage' => 'required',
+            'percentage' => 'required|numeric|between:0,99.99',
             'image' => 'mimes:jpeg,jpg,png,gif|max:2048'
         ];
 
@@ -53,7 +53,7 @@ class TopperController extends Controller
             }
 
             $success = Topper::create($requestData);
-            return Redirect::route('admin.topper')->with('success', 'Topper details added successfully!');
+            return Redirect::route('admin.topper')->with('success', 'Topper added successfully!');
         }
     }
 
@@ -62,7 +62,7 @@ class TopperController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'percentage' => 'required',
+            'percentage' => 'required|numeric|between:0,99.99',
             'description' => 'required',
         ];
 

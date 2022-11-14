@@ -20,7 +20,7 @@
             <div class="position-relative container-fluid px-0">
                 <div class="row align-items-center position-relative">
                     <div class="col-md-8 mb-4 mb-md-0">
-                        <h3 class="mb-2">Press Releases</h3>
+                        <h3 class="mb-2">Releases</h3>
                     </div>
                     <div class="card-tools">
                         <button class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"

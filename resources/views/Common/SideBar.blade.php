@@ -23,10 +23,7 @@
             <nav class="flex-grow-1 h-100" id="page-navbar">
                 <!--:Sidebar nav-->
                 <ul class="nav flex-column collapse-group collapse d-flex pt-4">
-                    <li class="nav-item sidebar-title text-truncate opacity-50 small">
-                        <i class="fas fa-ellipsis-h align-middle"></i>
-                        <span>Main</span>
-                    </li>
+
                     <li class="nav-item">
                         <a href="{{ route('admin.dashboard') }}" data-bs-toggle=""
                             class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.dashboard' ? 'active' : '' }} "
@@ -126,12 +123,7 @@
                             aria-expanded="false">
                             <!--Sidebar nav text-->
                             <span class="sidebar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                                    height="24">
-                                    <path
-                                        d="M12.97 2.59a1.5 1.5 0 00-1.94 0l-7.5 6.363A1.5 1.5 0 003 10.097V19.5A1.5 1.5 0 004.5 21h4.75a.75.75 0 00.75-.75V14h4v6.25c0 .414.336.75.75.75h4.75a1.5 1.5 0 001.5-1.5v-9.403a1.5 1.5 0 00-.53-1.144l-7.5-6.363z">
-                                    </path>
-                                </svg>
+                                <i class="fa fa-solid fa-star"></i>
                             </span>
                             <span class="sidebar-text">Our Achievements</span>
                         </a>
@@ -142,12 +134,7 @@
                             aria-expanded="false">
                             <!--Sidebar nav text-->
                             <span class="sidebar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                                    height="24">
-                                    <path
-                                        d="M12.97 2.59a1.5 1.5 0 00-1.94 0l-7.5 6.363A1.5 1.5 0 003 10.097V19.5A1.5 1.5 0 004.5 21h4.75a.75.75 0 00.75-.75V14h4v6.25c0 .414.336.75.75.75h4.75a1.5 1.5 0 001.5-1.5v-9.403a1.5 1.5 0 00-.53-1.144l-7.5-6.363z">
-                                    </path>
-                                </svg>
+                                <i class="fa fa-solid fa-graduation-cap"></i>
                             </span>
                             <span class="sidebar-text">Toppers</span>
                         </a>
@@ -186,11 +173,7 @@
                             class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.gallary' || Route::current()->getName() == 'admin.gallery.video' ? 'active' : '' }} "
                             aria-expanded="false" href="#ui-pages3">
                             <span class="sidebar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                    <path
-                                        d="M0 48C0 21.5 21.5 0 48 0H336c26.5 0 48 21.5 48 48V207l-42.4 17H304 272c-8.8 0-16 7.2-16 16v32 24.2V304c0 .9 .1 1.7 .2 2.6c2.3 58.1 24.1 144.8 98.7 201.5c-5.8 2.5-12.2 3.9-18.9 3.9H240V432c0-26.5-21.5-48-48-48s-48 21.5-48 48v80H48c-26.5 0-48-21.5-48-48V48zM80 224c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H80zm80 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zM64 112v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zM176 96c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H176zm80 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H272c-8.8 0-16 7.2-16 16zM423.1 225.7c5.7-2.3 12.1-2.3 17.8 0l120 48C570 277.4 576 286.2 576 296c0 63.3-25.9 168.8-134.8 214.2c-5.9 2.5-12.6 2.5-18.5 0C313.9 464.8 288 359.3 288 296c0-9.8 6-18.6 15.1-22.3l120-48zM527.4 312L432 273.8V461.7c68.2-33 91.5-99 95.4-149.7z" />
-                                </svg>
-
+                                <i class="fa fa-solid fa-image"></i>
                             </span>
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Gallery</span>
@@ -215,7 +198,7 @@
                             aria-expanded="false">
                             <!--Sidebar nav text-->
                             <span class="sidebar-icon">
-                                <i class="fa fa-solid fa-award"></i>
+                                <i class="fa fa-solid fa-tv"></i>
                             </span>
                             <span class="sidebar-text">Media</span>
                         </a>
@@ -227,7 +210,7 @@
                             aria-expanded="false">
                             <!--Sidebar nav text-->
                             <span class="sidebar-icon">
-                                <i class="fa fa-solid fa-award"></i>
+                                <i class="fa fa-solid fa-trophy"></i>
                             </span>
                             <span class="sidebar-text">Awards</span>
                         </a>
@@ -250,11 +233,7 @@
                             class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.privacy_policy' || Route::current()->getName() == 'admin.terms' || Route::current()->getName() == 'admin.disclaimer' ? 'active' : '' }} "
                             aria-expanded="false" href="#ui-pages4">
                             <span class="sidebar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                    <path
-                                        d="M0 48C0 21.5 21.5 0 48 0H336c26.5 0 48 21.5 48 48V207l-42.4 17H304 272c-8.8 0-16 7.2-16 16v32 24.2V304c0 .9 .1 1.7 .2 2.6c2.3 58.1 24.1 144.8 98.7 201.5c-5.8 2.5-12.2 3.9-18.9 3.9H240V432c0-26.5-21.5-48-48-48s-48 21.5-48 48v80H48c-26.5 0-48-21.5-48-48V48zM80 224c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H80zm80 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zM64 112v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zM176 96c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H176zm80 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H272c-8.8 0-16 7.2-16 16zM423.1 225.7c5.7-2.3 12.1-2.3 17.8 0l120 48C570 277.4 576 286.2 576 296c0 63.3-25.9 168.8-134.8 214.2c-5.9 2.5-12.6 2.5-18.5 0C313.9 464.8 288 359.3 288 296c0-9.8 6-18.6 15.1-22.3l120-48zM527.4 312L432 273.8V461.7c68.2-33 91.5-99 95.4-149.7z" />
-                                </svg>
-
+                                <i class="fa fa-solid fa-layer-group"></i>
                             </span>
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Policy</span>
@@ -264,7 +243,7 @@
                             <li class="sidebar-item"><a class="sidebar-link"
                                     href="{{ route('admin.privacy_policy') }}">Privacy Policy</a></li>
                             <li class="sidebar-item"><a class="sidebar-link"
-                                    href="{{ route('admin.terms') }}">Terms</a>
+                                    href="{{ route('admin.terms') }}">Terms & Conditions</a>
                             </li>
                             <li class="sidebar-item"><a class="sidebar-link"
                                     href="{{ route('admin.disclaimer') }}">Disclaimer</a>
@@ -278,7 +257,7 @@
                         <a href="{{ route('admin.jobs') }}" data-bs-toggle="" aria-expanded="false"
                             class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.jobs' ? 'active' : '' }}">
                             <span class="sidebar-icon">
-                                <i class="fa fa-solid fa-brain"></i>
+                                <i class="fa fa-solid fa-street-view"></i>
                             </span>
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Jobs</span>
@@ -291,11 +270,7 @@
                             class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.corp.governance' || Route::current()->getName() == 'admin.invester.presentation' ? 'active' : '' }} "
                             aria-expanded="false" href="#ui-pages5">
                             <span class="sidebar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                    <path
-                                        d="M0 48C0 21.5 21.5 0 48 0H336c26.5 0 48 21.5 48 48V207l-42.4 17H304 272c-8.8 0-16 7.2-16 16v32 24.2V304c0 .9 .1 1.7 .2 2.6c2.3 58.1 24.1 144.8 98.7 201.5c-5.8 2.5-12.2 3.9-18.9 3.9H240V432c0-26.5-21.5-48-48-48s-48 21.5-48 48v80H48c-26.5 0-48-21.5-48-48V48zM80 224c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H80zm80 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zM64 112v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zM176 96c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H176zm80 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H272c-8.8 0-16 7.2-16 16zM423.1 225.7c5.7-2.3 12.1-2.3 17.8 0l120 48C570 277.4 576 286.2 576 296c0 63.3-25.9 168.8-134.8 214.2c-5.9 2.5-12.6 2.5-18.5 0C313.9 464.8 288 359.3 288 296c0-9.8 6-18.6 15.1-22.3l120-48zM527.4 312L432 273.8V461.7c68.2-33 91.5-99 95.4-149.7z" />
-                                </svg>
-
+                                <i class="fa fa-solid fa-users"></i>
                             </span>
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Investor Relations</span>
@@ -318,14 +293,10 @@
                             class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.release.category' || Route::current()->getName() == 'admin.press.release' ? 'active' : '' }} "
                             aria-expanded="false" href="#ui-pages6">
                             <span class="sidebar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                    <path
-                                        d="M0 48C0 21.5 21.5 0 48 0H336c26.5 0 48 21.5 48 48V207l-42.4 17H304 272c-8.8 0-16 7.2-16 16v32 24.2V304c0 .9 .1 1.7 .2 2.6c2.3 58.1 24.1 144.8 98.7 201.5c-5.8 2.5-12.2 3.9-18.9 3.9H240V432c0-26.5-21.5-48-48-48s-48 21.5-48 48v80H48c-26.5 0-48-21.5-48-48V48zM80 224c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H80zm80 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zM64 112v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zM176 96c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H176zm80 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H272c-8.8 0-16 7.2-16 16zM423.1 225.7c5.7-2.3 12.1-2.3 17.8 0l120 48C570 277.4 576 286.2 576 296c0 63.3-25.9 168.8-134.8 214.2c-5.9 2.5-12.6 2.5-18.5 0C313.9 464.8 288 359.3 288 296c0-9.8 6-18.6 15.1-22.3l120-48zM527.4 312L432 273.8V461.7c68.2-33 91.5-99 95.4-149.7z" />
-                                </svg>
-
+                                <i class="fa fa-solid fa-newspaper"></i>
                             </span>
                             <!--Sidebar nav text-->
-                            <span class="sidebar-text">Release</span>
+                            <span class="sidebar-text"> Press Release</span>
                         </a>
                         <ul id="ui-pages6" class="sidebar-dropdown list-unstyled collapse">
 
@@ -343,11 +314,7 @@
                             class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.report.category' || Route::current()->getName() == 'admin.report' ? 'active' : '' }} "
                             aria-expanded="false" href="#ui-pages7">
                             <span class="sidebar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                    <path
-                                        d="M0 48C0 21.5 21.5 0 48 0H336c26.5 0 48 21.5 48 48V207l-42.4 17H304 272c-8.8 0-16 7.2-16 16v32 24.2V304c0 .9 .1 1.7 .2 2.6c2.3 58.1 24.1 144.8 98.7 201.5c-5.8 2.5-12.2 3.9-18.9 3.9H240V432c0-26.5-21.5-48-48-48s-48 21.5-48 48v80H48c-26.5 0-48-21.5-48-48V48zM80 224c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H80zm80 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V240c0-8.8-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zM64 112v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zM176 96c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H176zm80 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H272c-8.8 0-16 7.2-16 16zM423.1 225.7c5.7-2.3 12.1-2.3 17.8 0l120 48C570 277.4 576 286.2 576 296c0 63.3-25.9 168.8-134.8 214.2c-5.9 2.5-12.6 2.5-18.5 0C313.9 464.8 288 359.3 288 296c0-9.8 6-18.6 15.1-22.3l120-48zM527.4 312L432 273.8V461.7c68.2-33 91.5-99 95.4-149.7z" />
-                                </svg>
-
+                                <i class="fa fa-solid fa-file"></i>
                             </span>
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Reports</span>
@@ -370,7 +337,7 @@
                                 <i class="fa fa-solid fa-address-book"></i>
                             </span>
                             <!--Sidebar nav text-->
-                            <span class="sidebar-text">Contacts</span>
+                            <span class="sidebar-text">Contact Us</span>
                         </a>
                     </li>
 

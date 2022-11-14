@@ -78,12 +78,12 @@
                                                                 data-candidate_profile="{{ @$job->candidate_profile }}"
                                                                 data-description="{{ @$job->description }}"
                                                                 data-status="{{ @$job->status }}"><i
-                                                                    class="fa fa-edit"></i></a>
-                                                            {{-- <a class="delete-material"
+                                                                      class="fa fa-edit"></i></a>
+                                                          <a class="delete-material"
                                                                 href="{{ route('delete.job', @$job->id) }}"
                                                                 title="delete logo"
                                                                 onClick="return  confirm('Are you sure you want to delete ?')"><i
-                                                                    class="fa fa-trash-alt"></i></a> --}}
+                                                                    class="fa fa-trash-alt"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

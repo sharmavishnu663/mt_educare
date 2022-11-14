@@ -8,7 +8,7 @@
         <!--Chat header-->
         <div class="offcanvas-header height-70 d-flex align-items-center justify-content-between border-bottom shadow-none">
             <div>
-                <h5 class="offcanvas-title mb-0 lh-1" id="offcanvasChatLabel">Adam Voges</h5>
+                <h5 class="offcanvas-title mb-0 lh-1" id="offcanvasChatLabel">Admin</h5>
                 <div class="d-flex align-items-center">
                     <span class="size-5 border border-3 rounded-circle border-success me-2 d-block"></span>Online
                 </div>
@@ -408,35 +408,16 @@
     </div>
 
 
-
-
     <!--//Page Toolbar//-->
     <div class="toolbar p-4 pb-0">
         <div class="position-relative container-fluid px-0">
             <div class="row align-items-center position-relative">
                 <div class="col-md-5 mb-3 mb-lg-0">
-                    <h3 class="mb-2">Welcome back, Adam!</h3>
+                    <h3 class="mb-2">Welcome back, Admin!</h3>
 
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="#!" class="">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                            <li class="breadcrumb-item active">Default</li>
-                        </ol>
-                    </nav>
+
                 </div>
-                {{-- <div class="col-md-7 text-md-end">
-                    <div class="d-flex justify-content-md-end align-items-center">
-                        <div id="reportrange" class="btn btn-gray">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                <path fill-rule="evenodd"
-                                    d="M4.75 0a.75.75 0 01.75.75V2h5V.75a.75.75 0 011.5 0V2h1.25c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0113.25 16H2.75A1.75 1.75 0 011 14.25V3.75C1 2.784 1.784 2 2.75 2H4V.75A.75.75 0 014.75 0zm0 3.5h8.5a.25.25 0 01.25.25V6h-11V3.75a.25.25 0 01.25-.25h2zm-2.25 4v6.75c0 .138.112.25.25.25h10.5a.25.25 0 00.25-.25V7.5h-11z"
-                                    fill="currentColor"></path>
-                            </svg>
-                            <span class="small d-inline-block ms-1"></span>
-                        </div>
-                    </div>
-                </div> --}}
+
             </div>
         </div>
     </div>
@@ -535,11 +516,8 @@
     <!--//Page-footer//-->
     <footer class="pb-4">
         <div class="container-fluid px-4">
-            <span class="d-block lh-sm small text-muted text-end">&copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>. Copyright
-            </span>
+
+
         </div>
     </footer>
     <!--/.Page Footer End-->

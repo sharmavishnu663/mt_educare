@@ -18,7 +18,7 @@
             <div class="position-relative container-fluid px-0">
                 <div class="row align-items-center position-relative">
                     <div class="col-md-8 mb-4 mb-md-0">
-                        <h3 class="mb-2">Contact</h3>
+                        <h3 class="mb-2">Contact Us</h3>
                     </div>
                     @if(!$contact)
                     <div class="card-tools">
@@ -42,7 +42,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="table-responsive">
-                                        <table id="datatable" class="table mt-0 table-striped table-card table-nowrap">
+                                        <table id="" class="table mt-0 table-striped table-card table-nowrap">
                                             <thead class="text-uppercase small text-muted">
                                                 <tr>
                                                     <th>Robomate Enquiry</th>
@@ -100,13 +100,13 @@
                             @csrf
                             <div class="modal-body">
                                 <label for="maskPhone" class="form-label">Robomate Enquiry Number</label>
-                                <input class="form-control mb-2" type="phone" placeholder="Robomate Enquiry Number" name="robomate_enquiry" required>
+                                <input class="form-control mb-2" type="tel" placeholder="Robomate Enquiry Number" name="robomate_enquiry" required>
 
                                 <label for="maskPhone" class="form-label">Product Enquiry Number</label>
-                                <input class="form-control mb-2" type="phone" placeholder="Product Enquiry Number" name="product_enquiry" required>
+                                <input class="form-control mb-2" type="tel" placeholder="Product Enquiry Number" name="product_enquiry" required>
 
                                 <label for="maskPhone" class="form-label">Franchise Enquiry Number</label>
-                                <input class="form-control mb-2" type="phone" placeholder="Franchise Enquiry Number" name="franchise_enquiry" required>
+                                <input class="form-control mb-2" type="tel" placeholder="Franchise Enquiry Number" name="franchise_enquiry" required>
 
                             </div>
 
@@ -136,15 +136,15 @@
                             <input type="hidden" name="id" id="contactid">
                             <div class="modal-body">
                                 <label for="maskPhone" class="form-label">Robomate Enquiry Number</label>
-                                <input class="form-control mb-2" type="phone" placeholder="Robomate Enquiry Number" name="robomate_enquiry"
+                                <input class="form-control mb-2" type="phone" @error('phone') is-invalid @enderror" placeholder="Robomate Enquiry Number" name="robomate_enquiry"
                                     id="robomate_enquiry" required>
 
                                     <label for="maskPhone" class="form-label">Product Enquiry Number</label>
-                                    <input class="form-control mb-2" type="phone" placeholder="Product Enquiry Number" name="product_enquiry"
+                                    <input class="form-control mb-2" type="tel"   placeholder="Product Enquiry Number" name="product_enquiry"
                                         id="product_enquiry" required>
 
                                         <label for="maskPhone" class="form-label">Franchise Enquiry Number</label>
-                                <input class="form-control mb-2" type="phone" placeholder="title" name="franchise_enquiry"
+                                <input class="form-control mb-2" type="tel"  placeholder="title" name="franchise_enquiry"
                                     id="franchise_enquiry" required>
 
                             </div>

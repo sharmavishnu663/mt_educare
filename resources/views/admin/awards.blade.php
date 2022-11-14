@@ -26,7 +26,7 @@
             <div class="position-relative container-fluid px-0">
                 <div class="row align-items-center position-relative">
                     <div class="col-md-8 mb-4 mb-md-0">
-                        <h3 class="mb-2">Awars List</h3>
+                        <h3 class="mb-2">Awards List</h3>
 
 
                     </div>
@@ -64,7 +64,7 @@
                                                     <tr>
                                                         <td>{{ @$award->title }}
                                                         </td>
-                                                        <td>{{ @$award->description }}
+                                                        <td>{{ substr(@$award->description,0,100) }}...
                                                         </td>
                                                         <td>
                                                             @foreach ($images as $image)
@@ -118,8 +118,7 @@
                                 <input class="form-control mb-2" type="text" placeholder="title" name="title" required>
 
                                 <label for="maskPhone" class="form-label">Description</label>
-                                <textarea class="form-control mb-2" name="description" required>
-                                </textarea>
+                                <textarea class="form-control mb-2" name="description" required></textarea>
 
                                 <label for="maskPhone" class="form-label">Images</label>
                                 <input class="form-control mb-2" type="file" name="image[]" id="images" multiple

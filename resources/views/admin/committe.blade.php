@@ -17,13 +17,13 @@
             <div class="position-relative container-fluid px-0">
                 <div class="row align-items-center position-relative">
                     <div class="col-md-8 mb-4 mb-md-0">
-                        <h3 class="mb-2">Committee Management</h3>
+                        <h3 class="mb-2">Board Committee</h3>
 
 
                     </div>
                     <div class="card-tools">
                         <button class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
-                            style="float: right">Add Committee Management</button>
+                            style="float: right">Add Board Committee</button>
 
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel">Add Management
+                            <h5 class="modal-title" id="exampleModalToggleLabel">Add Board Committee
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>

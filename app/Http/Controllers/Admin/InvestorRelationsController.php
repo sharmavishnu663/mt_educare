@@ -27,7 +27,7 @@ class InvestorRelationsController extends Controller
     public function addCorpGovernance(Request $request)
     {
         $rules = [
-            'filename' =>  'required',
+            'filename' =>  'required|max:10000|mimes:pdf',
             'file_title' =>  'required',
         ];
 
@@ -46,7 +46,7 @@ class InvestorRelationsController extends Controller
         }
 
         CorpGovernance::create($requestData);
-        return Redirect::route('admin.corp.governance')->with('success', 'Corp Governance added successfully!');
+        return Redirect::route('admin.corp.governance')->with('success', 'Corporate Governance added successfully!');
     }
 
 
@@ -54,6 +54,7 @@ class InvestorRelationsController extends Controller
     {
         $rules = [
             'id' => 'required',
+
             'file_title' =>  'required'
         ];
 
@@ -75,14 +76,14 @@ class InvestorRelationsController extends Controller
             unset($requestData['_token']);
             $contactAdd = CorpGovernance::where('id', $video->id)->update($requestData);
 
-            return Redirect::route('admin.corp.governance')->with('success', 'Corp Governance update successfully!');
+            return Redirect::route('admin.corp.governance')->with('success', 'Corporate Governance update successfully!');
         }
     }
 
     public function deleteCorpGovernance($id)
     {
         CorpGovernance::where('id', $id)->delete();
-        return Redirect::route('admin.corp.governance')->with('success', 'Corp Governance deleted successfully!');
+        return Redirect::route('admin.corp.governance')->with('success', 'Corporate Governance deleted successfully!');
     }
 
 

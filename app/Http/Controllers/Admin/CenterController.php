@@ -33,10 +33,10 @@ class CenterController extends Controller
         $rules = [
             'state_id' => 'required',
             'city_id' => 'required',
-            'name' => 'required',
-            'mobile' => 'required',
-            'email' => 'required',
-            'address' => 'required',
+            'name' => 'required|string',
+            'mobile' => 'required|regex:/(0)[0-9]/|not_regex:/[a-z]/|min:9',
+            'email' => 'required|email',
+            'address' => 'required|',
             'zip_code' => 'required',
         ];
 

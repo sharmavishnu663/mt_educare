@@ -100,7 +100,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel">Add Management
+                            <h5 class="modal-title" id="exampleModalToggleLabel">Add Key Management
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -113,7 +113,7 @@
                                     <input class="form-control mb-2" type="text" placeholder="Title" name="title"
                                         required>
                                     <label for="maskPhone" class="form-label">Email</label>
-                                    <input class="form-control mb-2" type="text" placeholder="email" name="email"
+                                    <input class="form-control mb-2" type="text" placeholder="Email" name="email"
                                         required>
                                     <label for="maskPhone" class="form-label">Mobile</label>
                                     <input class="form-control mb-2" type="text" placeholder="Tele no" name="mobile"
