@@ -109,34 +109,32 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.job') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.job') }}" id="addJob" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
                                 <label for="maskPhone" class="form-label">Title</label>
-                                <input class="form-control mb-2" type="text" placeholder="title" name="title" required>
+                                <input class="form-control mb-2" type="text" placeholder="title" name="title"  id="title" required>
 
                                 <label for="maskPhone" class="form-label">Requirnments of Candidate</label>
-                                <textarea class="form-control mb-2" placeholder="Experience and CTC" name="requirement" required></textarea>
+                                <textarea class="form-control mb-2" placeholder="Experience and CTC" name="requirement" id="requirement" required></textarea>
 
                                 <label for="maskPhone" class="form-label">Location</label>
-                                <input class="form-control mb-2" type="text" placeholder="location" name="location"
+                                <input class="form-control mb-2" type="text" placeholder="location" name="location" id="location"
                                     required>
 
                                 <label for="maskPhone" class="form-label">Candidate and Profile</label>
-                                <textarea class="form-control mb-2" name="candidate_profile" placeholder="candidate profile" required>
+                                <textarea class="form-control mb-2" name="candidate_profile" placeholder="candidate profile" id="candidate_profile" required>
                                 </textarea>
 
                                 <label for="maskPhone" class="form-label">Description</label>
-                                <textarea class="form-control mb-2" placeholder="description" name="description" required> </textarea>
+                                <textarea class="form-control mb-2" placeholder="description" name="description" id="description" required> </textarea>
 
                                 <label for="maskPhone" class="form-label">Status</label>
-                                <select class="form-control mb-2" name="status" required>
+                                <select class="form-control mb-2" id="status" name="status" required>
                                     <option value="1">Open</option>
                                     <option value="0">Close</option>
                                 </select>
-
-
                             </div>
 
                             <div class="modal-footer">
@@ -159,7 +157,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.edit.job') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.edit.job') }}" id="updateJob" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <input type="hidden" name="id" id="job_id">
@@ -205,6 +203,77 @@
         </section>
     </div>
     <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        .error
+        {
+         color:#FF0000;
+         display: block;
+        }
+        </style>
+    <script>
+        $(document).ready(function () {
+        $('#addJob').validate({ // initialize the plugin
+            rules: {
+                title: {
+                    required: true
+                },
+                requirement: {
+                    required: true,
+
+                },
+                location: {
+                    required: true,
+                },
+
+                description:any{
+                    required: true,
+                }
+
+                candidate_profile: {
+                    required: true,
+                },
+                status: {
+                    required: true,
+
+                },
+
+            }
+        });
+    });
+    </script>
+    <script>
+        $(document).ready(function () {
+        $('#updateJob').validate({ // initialize the plugin
+            rules: {
+                title: {
+                    required: true
+                },
+                requirement: {
+                    required: true,
+                    number:true
+                },
+                location: {
+                    required: true,
+
+                },
+
+                description:any{
+                    required: true,
+                }
+
+                candidate_profile: {
+                    required: true,
+                },
+                status: {
+                    required: true,
+
+                },
+            }
+        });
+    });
+    </script>
 
     <script>
         $(".js-edit-logo").on('click', function(e) {

@@ -95,24 +95,25 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.boardOfDirectors') }}" method="post"
+                        <form action="{{ route('admin.add.boardOfDirectors') }}" id ="addBoardDirector" method="post"
                             enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <label for="maskPhone" class="form-label">Name</label>
-                                    <input class="form-control mb-2" type="text" placeholder="Name" name="name"
+                                    <input class="form-control mb-2" type="text" placeholder="Name" name="name" id="name"
                                         required>
                                     <label for="maskPhone" class="form-label">Designation</label>
-                                    <input class="form-control mb-2" type="text" placeholder="designation"
+                                    <input class="form-control mb-2" type="text" placeholder="designation" id="designation"
                                         name="designation" required>
 
                                     <label for="maskPhone" class="form-label">Image</label>
                                     <div class="mb-0">
                                         <input class="form-control" type="file" name="image"
-                                            accept="image/png, image/gif, image/jpeg" required>
+                                          id="image"  accept="image/png, image/gif, image/jpeg" required>
                                     </div>
+                                    <span>Image should be PNG,GIF,JPEG only</span>
                                 </div>
                             </div>
 
@@ -152,9 +153,10 @@
                                     <label for="maskPhone" class="form-label">Image</label>
                                     <div class="mb-0">
                                         <input class="form-control" type="file" name="image"
-                                            accept="image/png, image/gif, image/jpeg">
+                                            accept="image/png, image/gif, image/jpeg" onchange="Filevalidation(this)">
                                         <img id="profile_img">
                                     </div>
+                                    <span>Image should be PNG,GIF,JPEG only</span>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -171,6 +173,54 @@
         </section>
     </div>
     <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        .error
+        {
+         color:#FF0000;
+         display: block;
+        }
+        </style>
+    <script>
+        $(document).ready(function () {
+        $('#addBoardDirector').validate({ // initialize the plugin
+            rules: {
+                name: {
+                    required: true
+                },
+                designation: {
+                    required: true,
+                },
+                profile_img: {
+                    required: true,
+
+                },
+            }
+        });
+    });
+    </script>
+    <script>
+        Filevalidation = () => {
+            const fi = document.getElementById('file');
+            // Check if any file is selected.
+            if (fi.files.length > 0) {
+                for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                    const fsize = fi.files.item(i).size;
+                    const file = Math.round((fsize / 1024));
+                    // The size of the file.
+                    if (file >= 5120) {
+                        $('#file').val('');
+                        $("#liveToast").toggleClass("show").toggleClass("fade");
+                        $('#toasterID').html('');
+                        $('#toasterID').html('Max value should be 5MB');
+                        $('#liveToast').delay(1000).hide(500);
+                    }
+                }
+            }
+        }
+    </script>
 
     <script>
         $(".js-edit-logo").on('click', function(e) {
@@ -195,4 +245,5 @@
             }
         });
     </script>
+
 @endsection

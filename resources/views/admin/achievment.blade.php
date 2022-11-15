@@ -102,29 +102,29 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="{{ route('admin.add.achievment') }}" method="post" enctype="multipart/form-data"
-                            id="addVideo" onsubmit="return formsubmit(this)">
+                            id="addAchievment" onsubmit="return formsubmit(this)">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <label for="maskPhone" class="form-label">Students Ratio</label>
                                     <input class="form-control mb-2" type="text" placeholder="students"
-                                        name="student_ratio" required>
+                                    id= "student_ratio"   name="student_ratio" required>
 
                                     <label for="maskPhone" class="form-label">Faculty Ratio</label>
-                                    <input class="form-control mb-2" type="text" placeholder="faculties"
+                                    <input class="form-control mb-2" type="text" placeholder="faculties" id="faculty_ratio"
                                         name="faculty_ratio" required>
 
                                     <label for="maskPhone" class="form-label">Institute Ratio</label>
-                                    <input class="form-control mb-2" type="text" placeholder="institutes"
+                                    <input class="form-control mb-2" type="text" placeholder="institutes" id="institute_ratio"
                                         name="institute_ratio" required>
 
                                     <label for="maskPhone" class="form-label">School Ratio</label>
-                                    <input class="form-control mb-2" type="text" placeholder="schools"
+                                    <input class="form-control mb-2" type="text" placeholder="schools" id="school_ratio"
                                         name="school_ratio" required>
 
                                     <label for="maskPhone" class="form-label">College Ratio</label>
-                                    <input class="form-control mb-2" type="text" placeholder="colleges"
+                                    <input class="form-control mb-2" type="text" placeholder="colleges" id="college_ratio"
                                         name="college_ratio" required>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.update.achievement') }}" method="post"
+                        <form action="{{ route('admin.update.achievement') }}" method="post" id="updateAchievment"
                             enctype="multipart/form-data">
 
                             @csrf
@@ -192,7 +192,77 @@
         </section>
         <!-- /.content -->
     </div>
+
     <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        .error
+        {
+         color:#FF0000;
+         display: block;
+        }
+        </style>
+    <script>
+        $(document).ready(function () {
+        $('#addAchievment').validate({ // initialize the plugin
+            rules: {
+                student_ratio: {
+                    required: true,
+                    number:true
+                },
+                faculty_ratio: {
+                    required: true,
+                    number:true
+                },
+                institute_ratio: {
+                    required: true,
+                    number:true
+
+                },
+                school_ratio: {
+                    required: true,
+                    number:true
+                },
+                collge_ratio: {
+                    required: true,
+                    number:true
+                },
+            }
+        });
+    });
+    </script>
+    <script>
+        $(document).ready(function () {
+        $('#updateAchievment').validate({ // initialize the plugin
+            rules: {
+                student_ratio: {
+                    required: true,
+                    number:true
+                },
+                faculty_ratio: {
+                    required: true,
+                    number:true
+                },
+                institute_ratio: {
+                    required: true,
+                    number:true
+
+                },
+                school_ratio: {
+                    required: true,
+                    number:true
+                },
+                collge_ratio: {
+                    required: true,
+                    number:true
+                },
+
+            }
+        });
+    });
+    </script>
+
 
     <script>
         $(".js-edit-logo").on('click', function(e) {
@@ -213,4 +283,5 @@
 
         });
     </script>
+
 @endsection

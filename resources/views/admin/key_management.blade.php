@@ -104,31 +104,34 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.keyManagement') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.keyManagement') }}" id="addKeyManagement" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <label for="maskPhone" class="form-label">Title</label>
                                     <input class="form-control mb-2" type="text" placeholder="Title" name="title"
-                                        required>
+                                    id="title" required>
                                     <label for="maskPhone" class="form-label">Email</label>
                                     <input class="form-control mb-2" type="text" placeholder="Email" name="email"
+                                    id="email"
                                         required>
                                     <label for="maskPhone" class="form-label">Mobile</label>
                                     <input class="form-control mb-2" type="text" placeholder="Tele no" name="mobile"
+                                    id="email"
                                         required>
                                     <label for="maskPhone" class="form-label">Fax No.</label>
                                     <input class="form-control mb-2" type="text" placeholder="Fax no" name="fax"
+                                    id="fax"
                                         required>
 
                                     <label for="maskPhone" class="form-label">Address</label>
                                     <input class="form-control mb-2" type="text" placeholder="Street Number"
-                                        name="address" required>
+                                        name="address"  id="address" required>
 
                                     <label for="maskPhone" class="form-label">Address1</label>
                                     <input class="form-control mb-2" type="text" placeholder="State and city pin code "
-                                        name="address1" required>
+                                        name="address1"   id="address1" required>
 
                                 </div>
                             </div>
@@ -152,7 +155,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.update.keyManagement') }}" method="post"
+                        <form action="{{ route('admin.update.keyManagement') }}" id="updateKeyManagement" method="post"
                             enctype="multipart/form-data">
 
                             @csrf
@@ -195,6 +198,50 @@
         </section>
     </div>
     <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        .error
+        {
+         color:#FF0000;
+         display: block;
+        }
+        </style>
+    <script>
+        $(document).ready(function () {
+        $('#addKeyManagement"').validate({ // initialize the plugin
+            rules: {
+                title: {
+                    required: true
+                },
+                mobile: {
+                    required: true,
+                    number:true
+                },
+                email: {
+                    required: true,
+                     email:true
+
+                },
+                fax: {
+                    required: true,
+                    number:true
+
+                },
+                address: {
+                    required: true,
+
+                },
+                address1: {
+                    required: true,
+
+                },
+            }
+        });
+    });
+    </script>
+
+
 
     <script>
         $(".js-edit-logo").on('click', function(e) {

@@ -105,7 +105,7 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.topper') }}" method="post" enctype="multipart/form-data"
+                        <form action="{{ route('admin.add.topper') }}" id="addTopper" method="post" enctype="multipart/form-data"
                             id="addVideo" onsubmit="return formsubmit(this)">
 
                             @csrf
@@ -113,25 +113,26 @@
                                 <div class="card-body">
                                     <div class="form-group mb-1">
                                         <label for="email-1">Name</label>
-                                        <input type="text" class="form-control" name="name" placeholder="Name"
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Name"
                                             required>
                                     </div>
 
                                     <div class="form-group mb-1">
                                         <label for="email-1">Percentage</label>
-                                        <input type="text" class="form-control" name="percentage" placeholder="Percentage"
+                                        <input type="text" class="form-control" name="percentage" id ="percentage" placeholder="Percentage"
                                             required>
                                     </div>
 
                                     <div class="form-group mb-1">
                                         <label for="email-1">Description</label>
-                                        <textarea class="form-control" name="description" placeholder="description" required></textarea>
+                                        <textarea class="form-control" name="description" id="description" placeholder="description" required></textarea>
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Image</label>
-                                        <input type="file" class="form-control " name="image"
+                                        <input type="file" class="form-control " name="image" id="image"
                                             accept="image/png, image/gif, image/jpeg" onchange="Filevalidation(this)"
                                             required>
+                                            <span>Image should be JPG, GIF, PNG </span>
                                     </div>
 
                                 </div>
@@ -169,7 +170,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.update.topper') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.update.topper') }}" method="post" id="updateTopper" enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
@@ -216,6 +217,92 @@
         <!-- /.content -->
     </div>
     <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        .error
+        {
+         color:#FF0000;
+         display: block;
+        }
+        </style>
+    <script>
+        $(document).ready(function () {
+        $('#addTopper').validate({ // initialize the plugin
+            rules: {
+                name: {
+                    required: true
+                },
+                percentage: {
+                    required: true,
+                    range: [0, 100]
+                },
+                description: {
+                    required: true,
+
+                },
+                about_img: {
+                    required: true,
+                    number:true
+
+                },
+
+            }
+        });
+    });
+    </script>
+    <script>
+        $(document).ready(function () {
+        $('#updateTopper').validate({ // initialize the plugin
+            rules: {
+                name: {
+                    required: true
+                },
+                percentage: {
+                    required: true,
+                    range: [0, 100]
+                },
+                description: {
+                    required: true,
+
+                },
+                about_img: {
+                    required: true,
+                    number:true
+
+                },
+
+            }
+        });
+    });
+    </script>
+    <script>
+        $(document).ready(function () {
+        $('#updateReport').validate({ // initialize the plugin
+            rules: {
+                name: {
+                    required: true
+                },
+                percentage: {
+                    required: true,
+                    number:true
+                },
+                description: {
+                    required: true,
+
+                },
+                about_img: {
+                    required: true,
+                    number:true
+
+                },
+
+
+            }
+        });
+    });
+    </script>
+
     <script>
         Filevalidation = () => {
             const fi = document.getElementById('file');

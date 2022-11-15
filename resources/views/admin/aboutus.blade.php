@@ -13,9 +13,7 @@
             <strong>{{ $errormessage }}</strong>
         </div>
     @endif
-    @if ($errors->any())
-        <h4 class="error-msg">{{ $errors->first() }}</h4>
-    @endif
+
     <div class="content-wrapper" style="min-height: 1244.06px;">
         <!--//Page Toolbar//-->
         <div class="toolbar p-4 pb-0">
@@ -108,44 +106,48 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="{{ route('admin.add.about') }}" method="post" enctype="multipart/form-data"
-                            id="addVideo" onsubmit="return formsubmit(this)">
+                            id="addAbout" onsubmit="return formsubmit(this)">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <div class="form-group mb-1">
                                         <label for="email-1">Year</label>
-                                        <input type="text" class="form-control" name="year" placeholder="1988-1996"
+                                        <input type="text" class="form-control" id="year" name="year" placeholder="1988-1996"
                                             required>
+
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Title</label>
-                                        <input type="text" class="form-control" name="title" placeholder="title"
+                                        <input type="text" class="form-control" id="title" name="title" placeholder="title"
                                             required>
+
                                     </div>
 
                                     <div class="form-group mb-1">
                                         <label for="email-1">Description</label>
-                                        <textarea type="text" class="form-control" name="description" placeholder="description" required> </textarea>
+                                        <textarea type="text" class="form-control" id="description" name="description" placeholder="description" required>
+                                             </textarea>
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Image</label>
-                                        <input type="file" class="form-control " name="image"
+                                        <input type="file" class="form-control " name="image" id="image"
                                             accept="image/png, image/gif, image/jpeg" onchange="Filevalidation(this)"
                                             required>
+                                            <span>Image should be less than 1MB. </span>
                                     </div>
 
                                     <div class="form-group mb-1">
                                         <label for="email-1">Numbers of centers</label>
-                                        <input type="text" class="form-control" name="centers">
+                                        <input type="text" class="form-control" name="centers" id="centers">
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Revenue </label>
-                                        <input type="text" class="form-control" name="revenue">
+                                        <input type="text" class="form-control" name="revenue" id="revenue" >
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Students </label>
-                                        <input type="text" class="form-control" name="students">
+                                        <input type="text" class="form-control" name="students" id="students">
                                     </div>
 
                                 </div>
@@ -241,6 +243,49 @@
         <!-- /.content -->
     </div>
     <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        .error
+        {
+         color:#FF0000;
+         display: block;
+        }
+        </style>
+<script>
+    $(document).ready(function () {
+        $('#addAbout').validate({
+            rules: {
+                year: {
+                    required: true,
+                    number: true
+                },
+                title: {
+                    required: true,
+                    maxlength: 50
+
+                },
+                description: {
+                    required: true,
+
+                },
+                centers: {
+                    required: true,
+                    digits: true
+                },
+                revenue: {
+                    required: true,
+                    digits: true
+                },
+                students: {
+                    required: true,
+                    digits: true
+                },
+            },
+
+        });
+    });
+</script>
     <script>
         Filevalidation = () => {
             const fi = document.getElementById('file');

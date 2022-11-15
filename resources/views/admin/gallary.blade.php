@@ -92,14 +92,14 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.gallary') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.gallary') }}" method="post" id="addGallary" enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
 
                                     <label for="maskPhone" class="form-label">Gallery Category</label>
-                                    <select class="form-control mb-2" name="category_id" required>
+                                    <select class="form-control mb-2" id="category_id" required>
                                         <option disabled selected> Please select Category</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -112,8 +112,9 @@
                                     <h6>File Input</h6>
                                     <div class="mb-0">
                                         <input class="form-control" type="file" name="image"
-                                            accept="image/png, image/gif, image/jpeg" required>
+                                        id="image" accept="image/png, image/gif, image/jpeg" required>
                                     </div>
+                                    <span>File should be PNG, GIF, JPEG only</span>
 
                                 </div>
                             </div>
@@ -152,7 +153,7 @@
                                     </select>
                                     <h6>File Input</h6>
                                     <div class="mb-0">
-                                        <input class="form-control" type="file" name="image"
+                                        <input class="form-control" type="file" name="image" id="image"
                                             accept="image/png, image/gif, image/jpeg" id="formFile">
                                     </div>
                                     <img src="" id="gallary_image" width="25%">
@@ -172,6 +173,45 @@
         <!-- /.content -->
     </div>
     <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        .error
+        {
+         color:#FF0000;
+         display: block;
+        }
+        </style>
+    <script>
+        $(document).ready(function () {
+        $('#addGallary').validate({ // initialize the plugin
+            rules: {
+                category_id: {
+                    required: true
+                },
+                gallary_image: {
+                    required: true,
+                },
+
+            }
+        });
+    });
+    </script>
+    <script>
+        $(document).ready(function () {
+        $('#addGallary').validate({ // initialize the plugin
+            rules: {
+                category_id: {
+                    required: true
+                },
+                gallary_image: {
+                    required: true,
+                },
+
+            }
+        });
+    });
+    </script>
 
     <script>
         $(".js-edit-logo").on('click', function(e) {

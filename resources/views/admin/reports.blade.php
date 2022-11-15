@@ -104,13 +104,13 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.report') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.report') }}" id="addReport" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <label for="maskPhone" class="form-label">Report Category</label>
-                                    <select class="form-control mb-2" name="report_category_id" required>
+                                    <select class="form-control mb-2 allow_numeric" name="report_category_id" id="report_category_id" required>
                                         <option disabled selected> Please select Category</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -118,21 +118,21 @@
                                     </select>
 
                                     <label for="maskPhone" class="form-label">File Report Year</label>
-                                    <input class="form-control mb-2" type="text" placeholder="File Report Year"
-                                        name="report_year" required>
+                                    <input class="form-control mb-2 allow_numeric" type="text" placeholder="File Report Year"
+                                    id="report_year" name="report_year" required>
 
                                     <label for="maskPhone" class="form-label">File Quarter Name</label>
-                                    <input class="form-control mb-2" type="text" placeholder="File Quarter Name"
+                                    <input class="form-control mb-2 " type="text" placeholder="File Quarter Name" id="quarter_name"
                                         name="quarter_name" required>
 
                                     <label for="maskPhone" class="form-label">File Quater Code</label>
-                                    <input class="form-control mb-2" type="text" placeholder="File Release Date"
+                                    <input class="form-control mb-2" type="text" placeholder="File Release Date" id="quarter_code"
                                         name="quarter_code" required>
 
 
                                     <label for="maskPhone" class="form-label">File upload</label>
                                     <div class="mb-0">
-                                        <input class="form-control" type="file" name="file_name" accept=".pdf" required>
+                                        <input class="form-control" type="file" name="file_name" id="file_name" accept=".pdf" required>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.edit.report') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.edit.report') }}" id="updateReport" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <input type="hidden" name="id" id="count_id">
@@ -172,6 +172,7 @@
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
+
                                     <label for="maskPhone" class="form-label">File Report Year</label>
                                     <input class="form-control mb-2" type="text" placeholder="File Report Year"
                                         name="report_year" id="report_year" required>
@@ -206,6 +207,75 @@
         </section>
     </div>
     <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        .error
+        {
+         color:#FF0000;
+         display: block;
+        }
+        </style>
+    <script>
+        $(document).ready(function () {
+        $('#addReport').validate({ // initialize the plugin
+            rules: {
+                report_category_id: {
+                    required: true
+                },
+                report_year: {
+                    required: true,
+                    number:true
+                },
+                quarter_name: {
+                    required: true,
+
+                },
+                quarter_code: {
+                    required: true,
+                    minlength: 5
+
+                },
+                filename: {
+                    required: true,
+                    extension: "pdf"
+                },
+
+
+            }
+        });
+    });
+    </script>
+    <script>
+        $(document).ready(function () {
+        $('#updateReport').validate({ // initialize the plugin
+            rules: {
+                report_category_id: {
+                    required: true
+                },
+                report_year: {
+                    required: true,
+                    number:true
+                },
+                quarter_name: {
+                    required: true,
+
+                },
+                quarter_code: {
+                    required: true,
+                    number:true
+
+                },
+                filename: {
+                    required: true,
+                    extension: "pdf"
+                },
+
+
+            }
+        });
+    });
+    </script>
 
     <script>
         $(".js-edit-logo").on('click', function(e) {

@@ -95,6 +95,8 @@
 
     <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap5.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Datatables Responsive
@@ -104,6 +106,7 @@
             });
         });
     </script>
+
 
     <script src="{{ asset('assets/vendor/quill.min.js') }}  "></script>
     <script>

@@ -98,7 +98,7 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.csr') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.csr') }}" id="addCSR" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
@@ -116,6 +116,7 @@
                                         <input class="form-control" type="file" name="image"
                                             accept="image/png, image/gif, image/jpeg" required>
                                     </div>
+                                    <span>Image should be PNG,GIF,JPEG only</span>
 
                                 </div>
                             </div>
@@ -138,7 +139,7 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.edit.csr') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.edit.csr') }}" id="updateCSR" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
@@ -177,6 +178,55 @@
         <!-- /.content -->
     </div>
     <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        .error
+        {
+         color:#FF0000;
+         display: block;
+        }
+        </style>
+    <script>
+        $(document).ready(function () {
+        $('#addCSR').validate({ // initialize the plugin
+            rules: {
+                title: {
+                    required: true
+                },
+                description: {
+                    required: true,
+
+                },
+                team_image: {
+                    required: true,
+
+                },
+
+            }
+        });
+    });
+    </script>
+    <script>
+        $(document).ready(function () {
+        $('#updatePresentation').validate({ // initialize the plugin
+            rules: {
+                title: {
+                    required: true
+                },
+                description: {
+                    required: true,
+                    number:true
+                },
+                team_image: {
+                    required: true,
+
+                },
+
+            }
+        });
+    });
+    </script>
 
     <script>
         $(".js-edit-logo").on('click', function(e) {

@@ -97,21 +97,21 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.media') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.media') }}" id="addMedia" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
                                 <label for="maskPhone" class="form-label">Title</label>
-                                <input class="form-control mb-2" type="text" placeholder="title" name="title" required>
+                                <input class="form-control mb-2" type="text" placeholder="title" name="Title" id="title"required>
 
 
                                 <label for="maskPhone" class="form-label">Date</label>
-                                <input class="form-control mb-2" type="date" placeholder="date" name="date" required>
+                                <input class="form-control mb-2" type="date" placeholder="date" name="date" id="date" required>
 
 
 
                                 <label for="maskPhone" class="form-label">Description</label>
-                                <textarea class="form-control mb-2" placeholder="description" name="description" required> </textarea>
+                                <textarea class="form-control mb-2" placeholder="description" name="description" id="description" required> </textarea>
 
 
 
@@ -136,22 +136,22 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.update.media') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.update.media') }}" id="updateMedia" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <input type="hidden" name="id" id="media_id">
                             <div class="modal-body">
                                 <label for="maskPhone" class="form-label">Title</label>
-                                <input class="form-control mb-2" type="text" placeholder="title" name="title"
+                                <input class="form-control mb-2" type="text" placeholder="Title" name="title"
                                     id="title" required>
 
                                 <label for="maskPhone" class="form-label">Date</label>
-                                <input class="form-control mb-2" type="date" placeholder="date" name="date"
+                                <input class="form-control mb-2" type="date" placeholder="Date" name="date"
                                     id="date" required>
 
 
                                 <label for="maskPhone" class="form-label">Description</label>
-                                <textarea class="form-control mb-2" placeholder="description" name="description" id="description"> </textarea>
+                                <textarea class="form-control mb-2" placeholder="Description" name="description" id="description"> </textarea>
 
 
                             </div>
@@ -169,6 +169,50 @@
         </section>
     </div>
     <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        .error
+        {
+         color:#FF0000;
+         display: block;
+        }
+        </style>
+    <script>
+        $(document).ready(function () {
+        $('#addMedia').validate({ // initialize the plugin
+            rules: {
+                title: {
+                    required: true
+                },
+                date: {
+                    required: true,
+                },
+                description: {
+                    required: true,
+                },
+            }
+        });
+    });
+    </script>
+    <script>
+        $(document).ready(function () {
+        $('#updateMedia').validate({ // initialize the plugin
+            rules: {
+                title: {
+                    required: true
+                },
+                date: {
+                    required: true,
+                },
+                description: {
+                    required: true,
+                },
+
+            }
+        });
+    });
+    </script>
 
     <script>
         $(".js-edit-logo").on('click', function(e) {

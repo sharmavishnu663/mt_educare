@@ -103,7 +103,7 @@ class HomeController extends Controller
         }
 
         VideoGallery::create($requestData);
-        return Redirect::route('admin.gallery.video')->with('success', 'Carrer Video added successfully!');
+        return Redirect::route('admin.gallery.video')->with('success', 'Video added successfully!');
     }
 
 
@@ -137,7 +137,7 @@ class HomeController extends Controller
             unset($requestData['id']);
             $contactAdd = VideoGallery::where('id', $video->id)->update($requestData);
 
-            return Redirect::route('admin.gallery.video')->with('success', 'Carrer video update successfully!');
+            return Redirect::route('admin.gallery.video')->with('success', 'video update successfully!');
         }
     }
 

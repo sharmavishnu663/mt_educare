@@ -109,6 +109,7 @@
                                     <div class="mb-0">
                                         <input class="form-control" type="file" name="filename" accept=".pdf" required>
                                     </div>
+                                    <span> File should be PDF. </span>
                                 </div>
                             </div>
 

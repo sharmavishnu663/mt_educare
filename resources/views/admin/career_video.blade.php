@@ -134,16 +134,9 @@
                                     <h6>Video URL</h6>
                                     <div class="mb-0">
                                         <input class="form-control mb-2" type="url" placeholder="Video Url"
-                                            name="video_url" id="video_url">
+                                            name="video_url" id="video_url" required>
                                     </div>
-                                    <span>OR</span>
 
-                                    <h6>Upload Video</h6>
-                                    <div class="mb-0">
-                                        <input class="form-control" type="file" name="video_name" id="file"
-                                            accept="video/mp4,video/x-m4v,video/*" onchange="Filevalidation()">
-                                        <span id="error_video"></span>
-                                    </div>
                                     <div class="position-fixed start-50 top-0 translate-middle-x p-3" style="z-index: 1080">
                                         <div id="liveToast" class="toast bg-danger text-white border-0 shadow-lg"
                                             role="alert" aria-live="assertive" aria-atomic="true">
