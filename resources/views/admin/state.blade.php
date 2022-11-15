@@ -100,8 +100,8 @@
 
                                 <div class="form-group">
                                     <label for="email-1">Name</label>
-                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}"
-                                        required>
+                                    <input type="text" class="form-control AlphabetsOnly" name="name"
+                                        value="{{ old('name') }}" required>
                                 </div>
                             </div>
 
@@ -131,7 +131,8 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="email-1">Name</label>
-                                    <input type="text" id="name" class="form-control" name="name" required>
+                                    <input type="text" id="name" class="form-control AlphabetsOnly" name="name"
+                                        required>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -157,6 +158,18 @@
             $("#editModal .modal-dialog #state_id").val(id);
             $("#editModal .modal-dialog #name").val(name);
 
+        });
+    </script>
+    <script>
+        $('.AlphabetsOnly').keypress(function(e) {
+            var regex = new RegExp(/^[a-zA-Z\s]+$/);
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) {
+                return true;
+            } else {
+                e.preventDefault();
+                return false;
+            }
         });
     </script>
 @endsection

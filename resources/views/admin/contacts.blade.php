@@ -20,12 +20,12 @@
                     <div class="col-md-8 mb-4 mb-md-0">
                         <h3 class="mb-2">Contact Us</h3>
                     </div>
-                    @if(!$contact)
-                    <div class="card-tools">
-                        <button class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
-                            style="float: right">Add Contacts</button>
+                    @if (!$contact)
+                        <div class="card-tools">
+                            <button class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
+                                style="float: right">Add Contacts</button>
 
-                    </div>
+                        </div>
                     @endif
 
                 </div>
@@ -72,8 +72,7 @@
 
                                                         </td>
                                                     </tr>
-
-                                               @endif
+                                                @endif
 
                                             </tbody>
                                         </table>
@@ -100,13 +99,16 @@
                             @csrf
                             <div class="modal-body">
                                 <label for="maskPhone" class="form-label">Robomate Enquiry Number</label>
-                                <input class="form-control mb-2" type="tel" placeholder="Robomate Enquiry Number" name="robomate_enquiry" required>
+                                <input class="form-control mb-2 allow_numeric" type="text"
+                                    placeholder="Robomate Enquiry Number" name="robomate_enquiry" required>
 
                                 <label for="maskPhone" class="form-label">Product Enquiry Number</label>
-                                <input class="form-control mb-2" type="tel" placeholder="Product Enquiry Number" name="product_enquiry" required>
+                                <input class="form-control mb-2 allow_numeric" type="text"
+                                    placeholder="Product Enquiry Number" name="product_enquiry" required>
 
                                 <label for="maskPhone" class="form-label">Franchise Enquiry Number</label>
-                                <input class="form-control mb-2" type="tel" placeholder="Franchise Enquiry Number" name="franchise_enquiry" required>
+                                <input class="form-control mb-2 allow_numeric" type="text"
+                                    placeholder="Franchise Enquiry Number" name="franchise_enquiry" required>
 
                             </div>
 
@@ -127,8 +129,7 @@
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalToggleLabel">Edit Contact
                             </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="{{ route('admin.update.contact') }}" method="post" enctype="multipart/form-data">
 
@@ -136,16 +137,18 @@
                             <input type="hidden" name="id" id="contactid">
                             <div class="modal-body">
                                 <label for="maskPhone" class="form-label">Robomate Enquiry Number</label>
-                                <input class="form-control mb-2" type="phone" @error('phone') is-invalid @enderror" placeholder="Robomate Enquiry Number" name="robomate_enquiry"
-                                    id="robomate_enquiry" required>
+                                <input class="form-control mb-2 allow_numeric" type="text"
+                                    @error('phone') is-invalid @enderror" placeholder="Robomate Enquiry Number"
+                                    name="robomate_enquiry" id="robomate_enquiry" required>
 
-                                    <label for="maskPhone" class="form-label">Product Enquiry Number</label>
-                                    <input class="form-control mb-2" type="tel"   placeholder="Product Enquiry Number" name="product_enquiry"
-                                        id="product_enquiry" required>
+                                <label for="maskPhone" class="form-label">Product Enquiry Number</label>
+                                <input class="form-control mb-2 allow_numeric" type="text"
+                                    placeholder="Product Enquiry Number" name="product_enquiry" id="product_enquiry"
+                                    required>
 
-                                        <label for="maskPhone" class="form-label">Franchise Enquiry Number</label>
-                                <input class="form-control mb-2" type="tel"  placeholder="title" name="franchise_enquiry"
-                                    id="franchise_enquiry" required>
+                                <label for="maskPhone" class="form-label">Franchise Enquiry Number</label>
+                                <input class="form-control mb-2 allow_numeric" type="text" placeholder="title"
+                                    name="franchise_enquiry" id="franchise_enquiry" required>
 
                             </div>
                             <div class="modal-footer">
@@ -178,6 +181,15 @@
 
 
 
+        });
+    </script>
+    <script>
+        $(".allow_numeric").on("input", function(evt) {
+            var self = $(this);
+            self.val(self.val().replace(/\D/g, ""));
+            if ((evt.which < 48 || evt.which > 57)) {
+                evt.preventDefault();
+            }
         });
     </script>
 @endsection

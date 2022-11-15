@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class CSR extends Authenticatable
 {
-    protected $table = 'csr';
+    protected $table = 'CSR';
     /**
      * The attributes that are mass assignable.
      *
