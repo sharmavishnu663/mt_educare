@@ -50,7 +50,7 @@
                                                 <tr>
                                                     <th>Video Url</th>
 
-                                                    <th>Video</th>
+                                                    {{-- <th>Video</th> --}}
                                                     {{-- <th>Publish</th> --}}
 
                                                     <th>Action</th>
@@ -67,7 +67,7 @@
                                                                 src="https://www.youtube.com/embed/tgbNymZ7vqY?start=7&autoplay=0&showinfo=0&controls=0"></iframe> --}}
                                                             @endif
                                                         </td>
-                                                        <td>
+                                                        {{-- <td>
                                                             @if ($video->video_name)
                                                                 <video width="320" height="240" controls>
                                                                     <source src="{{ asset("storage/$video->video_name") }}"
@@ -75,7 +75,7 @@
                                                                     Your browser does not support the video tag.
                                                                 </video>
                                                             @endif
-                                                        </td>
+                                                        </td> --}}
 
                                                         {{-- <td>
                                                             @if ($video->active)
@@ -123,7 +123,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="{{ route('admin.add.gallery.video') }}" method="post" enctype="multipart/form-data"
-                            id="addVideo" onsubmit="return formsubmit(this)">
+                            id="addVideo" onsubmit="return formsubmit(this)" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -168,11 +168,10 @@
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalToggleLabel">Edit Gallery Video
                             </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="{{ route('admin.edit.gallery.video') }}" method="post"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -185,13 +184,13 @@
                                         <input class="form-control mb-2" type="url" placeholder="Video Url"
                                             name="video_url" id="edit_video_url">
                                     </div>
-                                    <span>OR</span>
+                                    {{-- <span>OR</span> --}}
 
-                                    <h6>Upload Video</h6>
+                                    {{-- <h6>Upload Video</h6>
                                     <div class="mb-0">
                                         <input class="form-control" type="file" name="video_name" id="video_name"
                                             accept="video/mp4,video/x-m4v,video/*" onchange="Filevalidation()">
-                                    </div>
+                                    </div> --}}
                                     <div id="edit_video">
                                     </div>
 
@@ -211,7 +210,7 @@
         </section>
         <!-- /.content -->
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script>
         Filevalidation = () => {
             const fi = document.getElementById('file');

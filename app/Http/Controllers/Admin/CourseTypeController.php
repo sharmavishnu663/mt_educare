@@ -37,7 +37,7 @@ class CourseTypeController extends Controller
         } else {
 
             $success = CourseType::create($requestData);
-            return Redirect::route('admin.courselist')->with('success', 'Course added successfully!');
+            return Redirect::route('admin.courselist')->with('success', 'successfully submitted!');
         }
     }
 
@@ -56,13 +56,13 @@ class CourseTypeController extends Controller
         } else {
             unset($requestData['_token']);
             CourseType::where('id', $request->id)->update($requestData);
-            return Redirect::route('admin.courselist')->with('success', 'Course updated successfully!');
+            return Redirect::route('admin.courselist')->with('success', 'successfully submitted!');
         }
     }
 
     public function deleteCourse($id)
     {
         CourseType::where('id', $id)->delete();
-        return Redirect::route('admin.courselist')->with('success', 'Course delete successfully!');
+        return Redirect::route('admin.courselist')->with('success', 'successfully submitted!');
     }
 }

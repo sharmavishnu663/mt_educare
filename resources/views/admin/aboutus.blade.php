@@ -61,7 +61,7 @@
                                                     <tr>
                                                         <td>{{ $about->year }}</td>
                                                         <td>{{ $about->title }}</td>
-                                                        <td>{{ $about->description }}</td>
+                                                        <td>{{ substr($about->description, 0, 100) }}...</td>
                                                         <td><img src="{{ asset('storage/' . $about->image) }}"
                                                                 width="25%"> </td>
                                                         <td> <a class="js-edit-logo" data-bs-toggle="modal"
@@ -105,36 +105,34 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.about') }}" method="post" enctype="multipart/form-data"
-                            id="addAbout" onsubmit="return formsubmit(this)">
+                        <form action="{{ route('admin.add.about') }}" method="post" class="ajaxForm"
+                            enctype="multipart/form-data" id="addAbout" onsubmit="return formsubmit(this)">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <div class="form-group mb-1">
                                         <label for="email-1">Year</label>
-                                        <input type="text" class="form-control" id="year" name="year" placeholder="1988-1996"
-                                            required>
+                                        <input type="text" class="form-control" id="year" name="year"
+                                            placeholder="1988-1996" required>
 
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Title</label>
-                                        <input type="text" class="form-control" id="title" name="title" placeholder="title"
-                                            required>
+                                        <input type="text" class="form-control" id="title" name="title"
+                                            placeholder="title" required>
 
                                     </div>
 
                                     <div class="form-group mb-1">
                                         <label for="email-1">Description</label>
-                                        <textarea type="text" class="form-control" id="description" name="description" placeholder="description" required>
-                                             </textarea>
+                                        <textarea type="text" class="form-control" id="description" name="description" placeholder="description" required></textarea>
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Image</label>
                                         <input type="file" class="form-control " name="image" id="image"
-                                            accept="image/png, image/gif, image/jpeg" onchange="Filevalidation(this)"
-                                            required>
-                                            <span>Image should be less than 1MB. </span>
+                                            accept="image/png, image/gif, image/jpeg" required>
+                                        <span style="color: red">(Image should be less than 1MB.) </span>
                                     </div>
 
                                     <div class="form-group mb-1">
@@ -143,7 +141,7 @@
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Revenue </label>
-                                        <input type="text" class="form-control" name="revenue" id="revenue" >
+                                        <input type="text" class="form-control" name="revenue" id="revenue">
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Students </label>
@@ -185,7 +183,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.update.about') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.update.about') }}" class="ajaxForm" method="post"
+                            enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
@@ -205,12 +204,14 @@
                                     <div class="form-group mb-1">
                                         <label for="email-1">Description</label>
                                         <textarea type="text" class="form-control" name="description" id="description" placeholder="description"
-                                            required> </textarea>
+                                            required></textarea>
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Image</label>
                                         <input type="file" class="form-control " name="image"
-                                            accept="image/png, image/gif, image/jpeg" onchange="Filevalidation(this)">
+                                            accept="image/png, image/gif, image/jpeg">
+                                        <span style="color: red">(Image should be less than 1MB.) </span>
+
                                         <img id="about_img" width="25%">
                                     </div>
 
@@ -242,50 +243,49 @@
         </section>
         <!-- /.content -->
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <style>
-        .error
-        {
-         color:#FF0000;
-         display: block;
+        .error {
+            color: #FF0000;
+            display: block;
         }
-        </style>
-<script>
-    $(document).ready(function () {
-        $('#addAbout').validate({
-            rules: {
-                year: {
-                    required: true,
-                    number: true
-                },
-                title: {
-                    required: true,
-                    maxlength: 50
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('#addAbout').validate({
+                rules: {
+                    year: {
+                        required: true,
+                        // number: true
+                    },
+                    title: {
+                        required: true,
+                        maxlength: 50
 
-                },
-                description: {
-                    required: true,
+                    },
+                    description: {
+                        required: true,
 
+                    },
+                    centers: {
+                        required: true,
+                        digits: true
+                    },
+                    revenue: {
+                        required: true,
+                        digits: true
+                    },
+                    students: {
+                        required: true,
+                        digits: true
+                    },
                 },
-                centers: {
-                    required: true,
-                    digits: true
-                },
-                revenue: {
-                    required: true,
-                    digits: true
-                },
-                students: {
-                    required: true,
-                    digits: true
-                },
-            },
 
+            });
         });
-    });
-</script>
+    </script>
     <script>
         Filevalidation = () => {
             const fi = document.getElementById('file');

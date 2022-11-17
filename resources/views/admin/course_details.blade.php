@@ -60,7 +60,8 @@
                                                         <td>{{ @$courseDetail->title }}</td>
                                                         <td>{{ substr($courseDetail->description, 0, 100) }}</td>
                                                         <td>
-                                                            <div><img class="course-img" src="{{ asset('storage/' .$courseDetail->image) }}"
+                                                            <div><img class="course-img"
+                                                                    src="{{ asset('storage/' . $courseDetail->image) }}"
                                                                     width="150px" height="150px" /></div>
                                                         </td>
                                                         <td>{{ @$courseDetail->tag_name }}</td>
@@ -104,7 +105,8 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.coursedetail') }}" id="addCourseDetail" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.coursedetail') }}" id="addCourseDetail" method="post"
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -120,19 +122,18 @@
                                     <input class="form-control mb-2" type="text" placeholder="title" name="title"
                                         required>
                                     <label for="maskPhone" class="form-label">Description</label>
-                                    <textarea class="form-control mb-2" type="text" placeholder="description" name="description" required> </textarea>
+                                    <textarea class="form-control mb-2" type="text" placeholder="description" name="description" required></textarea>
 
                                     <label for="maskPhone" class="form-label">Image</label>
                                     <div class="mb-2">
                                         <input class="form-control" type="file" name="image" id="team_image"
                                             accept="image/png, image/gif, image/jpeg" required>
-                                            <span>Image should be GIF,PNG,JPEG only </span>
+                                        <span style="color: red;">(Image should be GIF,PNG,JPEG only) </span>
                                     </div>
 
                                     <label for="maskPhone" class="form-label">Tag</label>
                                     <input class="form-control mb-2" type="text" placeholder="tag" name="tag_name"
-                                    id="tag_name"
-                                        required>
+                                        id="tag_name" required>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -156,7 +157,7 @@
                                 aria-label="Close"></button>
                         </div>
                         <form action="{{ route('admin.update.coursedetail') }}" id="updateCourseDetail" method="post"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -201,81 +202,72 @@
         </section>
         <!-- /.content -->
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-    <style>
-        .error
-        {
-         color:#FF0000;
-         display: block;
-        }
-        </style>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script>
-        $(document).ready(function () {
-        $('#addCourseDetail').validate({ // initialize the plugin
-            rules: {
-                title: {
-                    required: true
-                },
-                description: {
-                    required: true,
-                },
-                tag_name: {
-                    required: true,
+        $(document).ready(function() {
+            $('#addCourseDetail').validate({ // initialize the plugin
+                rules: {
+                    title: {
+                        required: true
+                    },
+                    description: {
+                        required: true,
+                    },
+                    tag_name: {
+                        required: true,
 
-                },
-                course_id: {
-                    required: true,
-                    number:true
+                    },
+                    course_id: {
+                        required: true,
+                        number: true
 
-                },
-                team_image: {
-                    required: true,
+                    },
+                    team_image: {
+                        required: true,
 
-                },
-                tag_name: {
-                    required: true,
+                    },
+                    tag_name: {
+                        required: true,
 
-                },
+                    },
 
 
-            }
+                }
+            });
         });
-    });
     </script>
     <script>
-        $(document).ready(function () {
-        $('#updateCourseDetail').validate({ // initialize the plugin
-            rules: {
-                title: {
-                    required: true
-                },
-                description: {
-                    required: true,
-                },
-                tag_name: {
-                    required: true,
+        $(document).ready(function() {
+            $('#updateCourseDetail').validate({ // initialize the plugin
+                rules: {
+                    title: {
+                        required: true
+                    },
+                    description: {
+                        required: true,
+                    },
+                    tag_name: {
+                        required: true,
 
-                },
-                course_id: {
-                    required: true,
-                    number:true
+                    },
+                    course_id: {
+                        required: true,
+                        number: true
 
-                },
-                team_image: {
-                    required: true,
+                    },
+                    team_image: {
+                        required: true,
 
-                },
-                tag_name: {
-                    required: true,
+                    },
+                    tag_name: {
+                        required: true,
 
-                },
+                    },
 
 
-            }
+                }
+            });
         });
-    });
     </script>
 
 

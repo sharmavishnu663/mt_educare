@@ -101,31 +101,31 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.achievment') }}" method="post" enctype="multipart/form-data"
-                            id="addAchievment" onsubmit="return formsubmit(this)">
+                        <form action="{{ route('admin.add.achievment') }}" method="post" class="ajaxForm"
+                            enctype="multipart/form-data" id="addAchievment" onsubmit="return formsubmit(this)">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <label for="maskPhone" class="form-label">Students Ratio</label>
-                                    <input class="form-control mb-2" type="text" placeholder="students"
-                                    id= "student_ratio"   name="student_ratio" required>
+                                    <input class="form-control mb-2 allow_numeric" type="text" placeholder="students"
+                                        id="student_ratio" name="student_ratio" required>
 
                                     <label for="maskPhone" class="form-label">Faculty Ratio</label>
-                                    <input class="form-control mb-2" type="text" placeholder="faculties" id="faculty_ratio"
-                                        name="faculty_ratio" required>
+                                    <input class="form-control mb-2 allow_numeric" type="text" placeholder="faculties"
+                                        id="faculty_ratio" name="faculty_ratio" required>
 
                                     <label for="maskPhone" class="form-label">Institute Ratio</label>
-                                    <input class="form-control mb-2" type="text" placeholder="institutes" id="institute_ratio"
-                                        name="institute_ratio" required>
+                                    <input class="form-control mb-2 allow_numeric" type="text" placeholder="institutes"
+                                        id="institute_ratio" name="institute_ratio" required>
 
                                     <label for="maskPhone" class="form-label">School Ratio</label>
-                                    <input class="form-control mb-2" type="text" placeholder="schools" id="school_ratio"
-                                        name="school_ratio" required>
+                                    <input class="form-control mb-2 allow_numeric" type="text" placeholder="schools"
+                                        id="school_ratio" name="school_ratio" required>
 
                                     <label for="maskPhone" class="form-label">College Ratio</label>
-                                    <input class="form-control mb-2" type="text" placeholder="colleges" id="college_ratio"
-                                        name="college_ratio" required>
+                                    <input class="form-control mb-2 allow_numeric" type="text" placeholder="colleges"
+                                        id="college_ratio" name="college_ratio" required>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -148,8 +148,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.update.achievement') }}" method="post" id="updateAchievment"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('admin.update.achievement') }}" class="ajaxForm" method="post"
+                            id="updateAchievment" enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
@@ -157,23 +157,24 @@
                                     <input type="hidden" name="id" id="achievment_id">
                                     <div class="modal-body">
                                         <label for="maskPhone" class="form-label">Student Ratio</label>
-                                        <input class="form-control mb-2" type="text" placeholder="students"
-                                            name="student_ratio" id="student_ratio" required>
+                                        <input class="form-control mb-2 allow_numeric" type="text"
+                                            placeholder="students" name="student_ratio" id="student_ratio" required>
                                         <label for="maskPhone" class="form-label">Faculty Ratio</label>
-                                        <input class="form-control mb-2" type="text" placeholder="faculties"
-                                            name="faculty_ratio" id="faculty_ratio" required>
+                                        <input class="form-control mb-2 allow_numeric" type="text"
+                                            placeholder="faculties" name="faculty_ratio" id="faculty_ratio" required>
                                         <label for="maskPhone" class="form-label">Institute Ratio</label>
-                                        <input class="form-control mb-2" type="text" placeholder="institutes"
-                                            name="institute_ratio" id="institute_ratio" required>
+                                        <input class="form-control mb-2 allow_numeric" type="text"
+                                            placeholder="institutes" name="institute_ratio" id="institute_ratio"
+                                            required>
                                         <label for="maskPhone" class="form-label">College Ratio</label>
 
-                                        <input class="form-control mb-2" type="text" placeholder="colleges"
-                                            name="college_ratio" id="collge_ratio" required>
+                                        <input class="form-control mb-2 allow_numeric" type="text"
+                                            placeholder="colleges" name="college_ratio" id="collge_ratio" required>
 
                                         <label for="maskPhone" class="form-label">School Ratio</label>
 
-                                        <input class="form-control mb-2" type="text" placeholder="schools"
-                                            name="school_ratio" id="school_ratio" required>
+                                        <input class="form-control mb-2 allow_numeric" type="text"
+                                            placeholder="schools" name="school_ratio" id="school_ratio" required>
 
 
 
@@ -193,74 +194,73 @@
         <!-- /.content -->
     </div>
 
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <style>
-        .error
-        {
-         color:#FF0000;
-         display: block;
+        .error {
+            color: #FF0000;
+            display: block;
         }
-        </style>
+    </style>
     <script>
-        $(document).ready(function () {
-        $('#addAchievment').validate({ // initialize the plugin
-            rules: {
-                student_ratio: {
-                    required: true,
-                    number:true
-                },
-                faculty_ratio: {
-                    required: true,
-                    number:true
-                },
-                institute_ratio: {
-                    required: true,
-                    number:true
+        $(document).ready(function() {
+            $('#addAchievment').validate({ // initialize the plugin
+                rules: {
+                    student_ratio: {
+                        required: true,
+                        number: true
+                    },
+                    faculty_ratio: {
+                        required: true,
+                        number: true
+                    },
+                    institute_ratio: {
+                        required: true,
+                        number: true
 
-                },
-                school_ratio: {
-                    required: true,
-                    number:true
-                },
-                collge_ratio: {
-                    required: true,
-                    number:true
-                },
-            }
+                    },
+                    school_ratio: {
+                        required: true,
+                        number: true
+                    },
+                    collge_ratio: {
+                        required: true,
+                        number: true
+                    },
+                }
+            });
         });
-    });
     </script>
     <script>
-        $(document).ready(function () {
-        $('#updateAchievment').validate({ // initialize the plugin
-            rules: {
-                student_ratio: {
-                    required: true,
-                    number:true
-                },
-                faculty_ratio: {
-                    required: true,
-                    number:true
-                },
-                institute_ratio: {
-                    required: true,
-                    number:true
+        $(document).ready(function() {
+            $('#updateAchievment').validate({ // initialize the plugin
+                rules: {
+                    student_ratio: {
+                        required: true,
+                        number: true
+                    },
+                    faculty_ratio: {
+                        required: true,
+                        number: true
+                    },
+                    institute_ratio: {
+                        required: true,
+                        number: true
 
-                },
-                school_ratio: {
-                    required: true,
-                    number:true
-                },
-                collge_ratio: {
-                    required: true,
-                    number:true
-                },
+                    },
+                    school_ratio: {
+                        required: true,
+                        number: true
+                    },
+                    collge_ratio: {
+                        required: true,
+                        number: true
+                    },
 
-            }
+                }
+            });
         });
-    });
     </script>
 
 
@@ -283,5 +283,13 @@
 
         });
     </script>
-
+    <script>
+        $(".allow_numeric").on("input", function(evt) {
+            var self = $(this);
+            self.val(self.val().replace(/\D/g, ""));
+            if ((evt.which < 48 || evt.which > 57)) {
+                evt.preventDefault();
+            }
+        });
+    </script>
 @endsection

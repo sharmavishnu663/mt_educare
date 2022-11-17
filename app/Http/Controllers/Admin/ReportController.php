@@ -37,7 +37,7 @@ class ReportController extends Controller
         }
 
         ReportCategory::create($requestData);
-        return Redirect::route('admin.report.category')->with('success', 'Report Category added successfully!');
+        return Redirect::route('admin.report.category')->with('success', 'successfully submitted!');
     }
 
 
@@ -59,14 +59,14 @@ class ReportController extends Controller
             unset($requestData['_token']);
             $contactAdd = ReportCategory::where('id', $investor->id)->update($requestData);
 
-            return Redirect::route('admin.report.category')->with('success', 'Report Category update successfully!');
+            return Redirect::route('admin.report.category')->with('success', 'successfully submitted!');
         }
     }
 
     public function deleteReportCategory($id)
     {
         ReportCategory::where('id', $id)->delete();
-        return Redirect::route('admin.report.category')->with('success', 'Report Category deleted successfully!');
+        return Redirect::route('admin.report.category')->with('success', 'successfully submitted!');
     }
 
     // Report start
@@ -102,7 +102,7 @@ class ReportController extends Controller
         }
 
         Report::create($requestData);
-        return Redirect::route('admin.report')->with('success', 'Report added successfully!');
+        return Redirect::route('admin.report')->with('success', 'successfully submitted!');
     }
 
 
@@ -134,13 +134,13 @@ class ReportController extends Controller
             unset($requestData['_token']);
             $contactAdd = Report::where('id', $investor->id)->update($requestData);
 
-            return Redirect::route('admin.report')->with('success', 'Report update successfully!');
+            return Redirect::route('admin.report')->with('success', 'successfully submitted!');
         }
     }
 
     public function deleteReports($id)
     {
         Report::where('id', $id)->delete();
-        return Redirect::route('admin.report')->with('success', 'Report deleted successfully!');
+        return Redirect::route('admin.report')->with('success', 'successfully submitted!');
     }
 }

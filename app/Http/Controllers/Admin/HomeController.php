@@ -44,7 +44,7 @@ class HomeController extends Controller
             return back()->withErrors($validator)->withInput();
         } else {
             Job::create($requestData);
-            return Redirect::route('admin.jobs')->with('success', 'Job added successfully!');
+            return Redirect::route('admin.jobs')->with('success', 'successfully submitted!');
         }
     }
 
@@ -68,14 +68,14 @@ class HomeController extends Controller
             unset($requestData['_token']);
             $contactAdd = Job::where('id', $request->id)->update($requestData);
 
-            return Redirect::route('admin.jobs')->with('success', 'Job update successfully!');
+            return Redirect::route('admin.jobs')->with('success', 'successfully submitted!');
         }
     }
 
     public function deleteJobs($id)
     {
         Job::where('id', $id)->delete();
-        return Redirect::route('admin.jobs')->with('success', 'Job deleted successfully!');
+        return Redirect::route('admin.jobs')->with('success', 'successfully submitted!');
     }
     // Jobs End
 
@@ -103,7 +103,7 @@ class HomeController extends Controller
         }
 
         VideoGallery::create($requestData);
-        return Redirect::route('admin.gallery.video')->with('success', 'Video added successfully!');
+        return Redirect::route('admin.gallery.video')->with('success', 'successfully submitted!');
     }
 
 
@@ -137,14 +137,14 @@ class HomeController extends Controller
             unset($requestData['id']);
             $contactAdd = VideoGallery::where('id', $video->id)->update($requestData);
 
-            return Redirect::route('admin.gallery.video')->with('success', 'video update successfully!');
+            return Redirect::route('admin.gallery.video')->with('success', 'successfully submitted!');
         }
     }
 
     public function deleteGalleryVideo($id)
     {
         VideoGallery::where('id', $id)->delete();
-        return Redirect::route('admin.gallery.video')->with('success', 'Carrer video deleted successfully!');
+        return Redirect::route('admin.gallery.video')->with('success', 'successfully submitted!');
     }
 
     public function statusCareerVideo($id)
@@ -163,6 +163,13 @@ class HomeController extends Controller
         } else {
             return Redirect::route('admin.career.video')->with('error', 'Data Not Found!');
         }
+    }
+
+    public function themeChange(Request $request)
+    {
+        $theme = $request->theme;
+        $request->session()->put('theme', $theme);
+        return 'success';
     }
 
     // career video end

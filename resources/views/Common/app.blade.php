@@ -29,8 +29,33 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap5.min.css">
 
     <!--Main style-->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}" id="switchThemeStyle">
+    @if (Session::get('theme') == 'light')
+        <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}" id="switchThemeStyle">
+    @else
+        <link rel="stylesheet" href="{{ asset('assets/css/style.dark.min.css') }}" id="switchThemeStyle">
+    @endif
 </head>
+<style>
+    .error {
+        color: red;
+        display: block;
+    }
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: 5px;
+        border: 1px solid #dfdfdf;
+        border-radius: 2px;
+        margin-right: 2rem;
+        padding: 1rem;
+        padding-right: 2rem;
+    }
+</style>
 
 <body>
 
@@ -95,7 +120,6 @@
 
     <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap5.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -104,6 +128,23 @@
                 "filter": false,
                 "length": false
             });
+        });
+        $("input[type='file']").on("change", function() {
+            if (this.files[0].size > 1000000) {
+                alert("Please upload file less than 1MB. Thanks!!");
+                $(this).val('');
+            }
+        });
+
+        $(document).on('submit', '.ajaxForm', function() {
+            var $this = $(this);
+            setTimeout(function() {
+                $this.find(':input[type=submit]').attr('disabled', 'disabled')
+            }, 1);
+        });
+
+        $(document).ready(function() {
+            $('.alert-block').fadeOut(5000); // 5 seconds x 1000 milisec = 5000 milisec
         });
     </script>
 
@@ -391,6 +432,24 @@
                 show: false
             }
         }).render()
+    </script>
+
+    <script>
+        function addCss(theme) {
+            var theme = theme;
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: '{!! route('admin.theme.change') !!}', //the page containing php script
+                type: "post", //request type,
+                data: {
+                    theme: theme,
+                    _token: _token
+                },
+                success: function(result) {
+                    return true
+                }
+            });
+        }
     </script>
 
 </body>

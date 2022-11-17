@@ -45,7 +45,7 @@ class CSRController extends Controller
             $requestData['image'] =  $profileName;
             //dd($requestData);
             CSR::create($requestData);
-            return Redirect::route('admin.csr')->with('success', 'CSR added successfully!');
+            return Redirect::route('admin.CSR')->with('success', 'successfully submitted!');
         }
     }
 
@@ -73,13 +73,13 @@ class CSRController extends Controller
             }
             unset($requestData['_token']);
             CSR::where('id', $csr->id)->update($requestData);
-            return Redirect::route('admin.csr')->with('success', 'CSR update successfully!');
+            return Redirect::route('admin.csr')->with('success', 'successfully submitted!');
         }
     }
 
     public function deleteCsr($id)
     {
         CSR::where('id', $id)->delete();
-        return Redirect::route('admin.csr')->with('success', 'CSR deleted successfully!');
+        return Redirect::route('admin.csr')->with('success', 'successfully submitted!');
     }
 }

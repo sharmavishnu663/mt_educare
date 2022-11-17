@@ -94,8 +94,8 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.corp.governance') }}" method="post"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.corp.governance') }}" method="post" enctype="multipart/form-data"
+                            class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -109,7 +109,7 @@
                                     <div class="mb-0">
                                         <input class="form-control" type="file" name="filename" accept=".pdf" required>
                                     </div>
-                                    <span> File should be PDF. </span>
+                                    <span style="color: red">(File should be PDF and max 1mb) </span>
                                 </div>
                             </div>
 
@@ -133,7 +133,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="{{ route('admin.edit.corp.governance') }}" method="post"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <input type="hidden" name="id" id="count_id">
@@ -147,7 +147,9 @@
                                     <label for="maskPhone" class="form-label">File upload</label>
                                     <div class="mb-0">
                                         <input class="form-control" type="file" name="filename" id="filename"
-                                            accept=".pdf">
+                                            required accept=".pdf">
+                                        <span style="color: red">(File should be PDF and max 1mb) </span>
+
                                         <a href="" id="corpFile" target="_blank">View File</a>
                                     </div>
                                 </div>
@@ -165,7 +167,7 @@
 
         </section>
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
 
     <script>
         $(".js-edit-logo").on('click', function(e) {

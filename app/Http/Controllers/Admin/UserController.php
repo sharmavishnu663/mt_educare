@@ -33,8 +33,8 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $users = User::where('parent_id',$user->id)->orWhere('id',$user->id)->orderBy('created_at', 'desc')->get();
-        $users =  $users->map(function($user) {
+        $users = User::where('parent_id', $user->id)->orWhere('id', $user->id)->orderBy('created_at', 'desc')->get();
+        $users =  $users->map(function ($user) {
             return [
                 'id' => $user->id,
                 'name' => $user->name,
@@ -48,14 +48,15 @@ class UserController extends Controller
                 'profile_image' => $user->profile_image,
             ];
         });
-        $admins = User::where('role_type','admin')->where('organization_id',$user->organization_id)->get();
-        $offices = Offices::where('organization_id',$user->organization_id)->get();
-        return view('admin.user.index', compact('user','users','offices','admins'));
+        $admins = User::where('role_type', 'admin')->where('organization_id', $user->organization_id)->get();
+        $offices = Offices::where('organization_id', $user->organization_id)->get();
+        return view('admin.user.index', compact('user', 'users', 'offices', 'admins'));
     }
 
-    public function getOffices($id) {
-        $officeDe = explode(',',$id);
-        $officeDetails = Offices::whereIn('id',$officeDe)->get();
+    public function getOffices($id)
+    {
+        $officeDe = explode(',', $id);
+        $officeDetails = Offices::whereIn('id', $officeDe)->get();
         return $officeDetails;
     }
     public function addUser(Request $request)
@@ -77,28 +78,26 @@ class UserController extends Controller
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
-
         } else {
             unset($requestData['_token']);
             $offices = $request->office_id;
             $office = implode(',', $offices);
             $requestData['office_id'] = $office;
             $requestData['password'] = bcrypt($request->password);
-            $requestData['status'] =1;
+            $requestData['status'] = 1;
             $requestData['parent_id'] = Auth::id();
             $requestData['organization_id'] = auth()->user()->organization_id;
 
             if ($request->file('profile_image')) {
-//            profile image upload
+                //            profile image upload
                 $profileImage = $request->file('profile_image');
                 $profileName = time() . 'profile.' . $profileImage->getClientOriginalExtension();
                 Storage::disk('public')->put($profileName,  File::get($profileImage));
                 $requestData['profile_image'] = Storage::disk('public')->url($profileName);
             }
             $success = User::create($requestData);
-            return Redirect::route('admin.userlist')->with('success','User added successfully!');
+            return Redirect::route('admin.userlist')->with('success', 'successfully submitted!');
         }
-
     }
 
     public function updateUser(Request $request)
@@ -108,8 +107,8 @@ class UserController extends Controller
             'role_type' => 'required',
             'office_id' => 'required',
             'profile_image' => 'mimes:jpeg,jpg,png,gif|max:2048',
-            'email' => 'required|email|unique:users,email,'.$request->id,
-            'uid' => 'required|unique:users,uid,'.$request->id,
+            'email' => 'required|email|unique:users,email,' . $request->id,
+            'uid' => 'required|unique:users,uid,' . $request->id,
         ];
 
         $requestData = $request->all();
@@ -118,27 +117,26 @@ class UserController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)
                 ->withInput($request->except('password'));
-        }
-        else {
+        } else {
             $offices = $request->office_id;
             $office = implode(',', $offices);
             $requestData['office_id'] = $office;
             if ($request->file('profile_image')) {
-//            profile image upload
-               $profileImage = $request->file('profile_image');
-               $profileName = time() . 'profile.' . $profileImage->getClientOriginalExtension();
-               Storage::disk('public')->put($profileName,  File::get($profileImage));
-               $requestData['profile_image'] = Storage::disk('public')->url($profileName);
+                //            profile image upload
+                $profileImage = $request->file('profile_image');
+                $profileName = time() . 'profile.' . $profileImage->getClientOriginalExtension();
+                Storage::disk('public')->put($profileName,  File::get($profileImage));
+                $requestData['profile_image'] = Storage::disk('public')->url($profileName);
             }
             unset($requestData['_token']);
-            User::where('id',$request->id)->update($requestData);
-            return Redirect::route('admin.userlist')->with('success','User updated successfully!');
+            User::where('id', $request->id)->update($requestData);
+            return Redirect::route('admin.userlist')->with('success', 'User updated successfully!');
         }
     }
 
     public function deleteUser($id)
     {
-        User::where('id',$id)->delete();
+        User::where('id', $id)->delete();
         return Redirect::route('admin.userlist');
     }
 }

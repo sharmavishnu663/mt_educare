@@ -51,7 +51,7 @@ class ClassCategoryController extends Controller
         } else {
 
             $success = ClassCategory::create($requestData);
-            return Redirect::route('admin.classCategory')->with('success', 'Category standard added successfully!');
+            return Redirect::route('admin.classCategory')->with('success', 'successfully submitted!');
         }
     }
 
@@ -77,7 +77,7 @@ class ClassCategoryController extends Controller
 
             unset($requestData['_token']);
             $success = ClassCategory::where('id', $course->id)->update($requestData);
-            return Redirect::route('admin.classCategory')->with('success', 'Category standard updated successfully!');
+            return Redirect::route('admin.classCategory')->with('success', 'successfully submitted!');
         }
     }
 
@@ -85,6 +85,6 @@ class ClassCategoryController extends Controller
     public function deleteClass($id)
     {
         ClassCategory::where('id', $id)->delete();
-        return Redirect::route('admin.classCategory')->with('success', 'Category standard delete successfully!');
+        return Redirect::route('admin.classCategory')->with('success', 'successfully submitted!');
     }
 }

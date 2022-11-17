@@ -63,17 +63,16 @@
 
                                                         <td>{{ $topper->name }}</td>
                                                         <td> {{ $topper->percentage }} </td>
-                                                        <td>{{ $topper->description }}</td>
+                                                        <td>{{ substr($topper->description, 0, 100) }}...</td>
                                                         <td><img src="{{ asset('storage/' . $topper->image) }}"
                                                                 width="25%"> </td>
                                                         <td> <a class="js-edit-logo" data-bs-toggle="modal"
                                                                 href="#editModal" style="cursor:pointer" title="edit state"
                                                                 data-id="{{ $topper->id }}"
                                                                 data-name="{{ $topper->name }}"
-                                                                data-percentage = "{{ $topper->percentage }}"
+                                                                data-percentage="{{ $topper->percentage }}"
                                                                 data-description="{{ $topper->description }}"
-
-                                                               data-image="{{ asset('storage/' . $topper->image) }}"><i
+                                                                data-image="{{ asset('storage/' . $topper->image) }}"><i
                                                                     class="fa fa-edit"></i></a>
                                                             <a class="delete-material"
                                                                 href="{{ route('delete.topper', @$topper->id) }}"
@@ -105,22 +104,23 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.topper') }}" id="addTopper" method="post" enctype="multipart/form-data"
-                            id="addVideo" onsubmit="return formsubmit(this)">
+                        <form action="{{ route('admin.add.topper') }}" id="addTopper" method="post"
+                            enctype="multipart/form-data" id="addVideo" onsubmit="return formsubmit(this)"
+                            class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <div class="form-group mb-1">
                                         <label for="email-1">Name</label>
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Name"
-                                            required>
+                                        <input type="text" class="form-control" name="name" id="name"
+                                            placeholder="Name" required>
                                     </div>
 
                                     <div class="form-group mb-1">
                                         <label for="email-1">Percentage</label>
-                                        <input type="text" class="form-control" name="percentage" id ="percentage" placeholder="Percentage"
-                                            required>
+                                        <input type="text" class="form-control" name="percentage" id="percentage"
+                                            placeholder="Percentage" required>
                                     </div>
 
                                     <div class="form-group mb-1">
@@ -132,7 +132,7 @@
                                         <input type="file" class="form-control " name="image" id="image"
                                             accept="image/png, image/gif, image/jpeg" onchange="Filevalidation(this)"
                                             required>
-                                            <span>Image should be JPG, GIF, PNG </span>
+                                        <span style="color: red">(Image should be JPG, GIF, PNG and max 1mb) </span>
                                     </div>
 
                                 </div>
@@ -170,7 +170,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.update.topper') }}" method="post" id="updateTopper" enctype="multipart/form-data">
+                        <form action="{{ route('admin.update.topper') }}" method="post" id="updateTopper"
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -192,12 +193,14 @@
 
                                     <div class="form-group mb-1">
                                         <label for="email-1">Description</label>
-                                        <textarea type="text" class="form-control" name="description" id="description" placeholder="description" required></textarea>
+                                        <textarea type="text" class="form-control" name="description" id="description" placeholder="description"
+                                            required></textarea>
                                     </div>
                                     <div class="form-group mb-1">
                                         <label for="email-1">Image</label>
                                         <input type="file" class="form-control " name="image"
-                                            accept="image/png, image/gif, image/jpeg" onchange="Filevalidation(this)">
+                                            accept="image/png, image/gif, image/jpeg">
+                                        <span style="color: red">(Image should be JPG, GIF, PNG and max 1mb) </span><br />
                                         <img id="about_img" width="25%">
                                     </div>
 
@@ -216,91 +219,90 @@
         </section>
         <!-- /.content -->
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <style>
-        .error
-        {
-         color:#FF0000;
-         display: block;
+        .error {
+            color: #FF0000;
+            display: block;
         }
-        </style>
+    </style>
     <script>
-        $(document).ready(function () {
-        $('#addTopper').validate({ // initialize the plugin
-            rules: {
-                name: {
-                    required: true
-                },
-                percentage: {
-                    required: true,
-                    range: [0, 100]
-                },
-                description: {
-                    required: true,
+        $(document).ready(function() {
+            $('#addTopper').validate({ // initialize the plugin
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    percentage: {
+                        required: true,
+                        range: [0, 100]
+                    },
+                    description: {
+                        required: true,
 
-                },
-                about_img: {
-                    required: true,
-                    number:true
+                    },
+                    about_img: {
+                        required: true,
+                        number: true
 
-                },
+                    },
 
-            }
+                }
+            });
         });
-    });
     </script>
     <script>
-        $(document).ready(function () {
-        $('#updateTopper').validate({ // initialize the plugin
-            rules: {
-                name: {
-                    required: true
-                },
-                percentage: {
-                    required: true,
-                    range: [0, 100]
-                },
-                description: {
-                    required: true,
+        $(document).ready(function() {
+            $('#updateTopper').validate({ // initialize the plugin
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    percentage: {
+                        required: true,
+                        range: [0, 100]
+                    },
+                    description: {
+                        required: true,
 
-                },
-                about_img: {
-                    required: true,
-                    number:true
+                    },
+                    about_img: {
+                        required: true,
+                        number: true
 
-                },
+                    },
 
-            }
+                }
+            });
         });
-    });
     </script>
     <script>
-        $(document).ready(function () {
-        $('#updateReport').validate({ // initialize the plugin
-            rules: {
-                name: {
-                    required: true
-                },
-                percentage: {
-                    required: true,
-                    number:true
-                },
-                description: {
-                    required: true,
+        $(document).ready(function() {
+            $('#updateReport').validate({ // initialize the plugin
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    percentage: {
+                        required: true,
+                        number: true
+                    },
+                    description: {
+                        required: true,
 
-                },
-                about_img: {
-                    required: true,
-                    number:true
+                    },
+                    about_img: {
+                        required: true,
+                        number: true
 
-                },
+                    },
 
 
-            }
+                }
+            });
         });
-    });
     </script>
 
     <script>

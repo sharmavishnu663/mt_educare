@@ -64,7 +64,7 @@
                                                     <tr>
                                                         <td>{{ @$award->title }}
                                                         </td>
-                                                        <td>{{ substr(@$award->description,0,100) }}...
+                                                        <td>{{ substr(@$award->description, 0, 100) }}...
                                                         </td>
                                                         <td>
                                                             @foreach ($images as $image)
@@ -110,26 +110,30 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.award') }}" id = "addAward" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.award') }}" id="addAward" class="ajaxForm" method="post"
+                            enctype="multipart/form-data">
 
                             @csrf
                             <div class="modal-body">
                                 <label for="maskPhone" class="form-label">Title</label>
-                                <input class="form-control mb-2 @error('title') is-invalid @enderror" type="text" placeholder="title" id="title" name="title" required>
+                                <input class="form-control mb-2 @error('title') is-invalid @enderror" type="text"
+                                    placeholder="title" id="title" name="title" required>
                                 @error('title')
-                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                 @enderror
 
                                 <label for="maskPhone" class="form-label">Description</label>
-                                <textarea class="form-control mb-2 @error('description') is-invalid @enderror" id="description" name="description" required></textarea>
+                                <textarea class="form-control mb-2 @error('description') is-invalid @enderror" id="description" name="description"
+                                    required></textarea>
                                 @error('description')
                                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                    @enderror
+                                @enderror
 
                                 <label for="maskPhone" class="form-label">Images</label>
-                                <input class="form-control mb-2" type="file" name="image[]" id="images" multiple
-                                    required>
-                                    <span>Images should be GIF,PNG,JPEG</span>
+                                <input class="form-control mb-2" type="file" name="image[]" id="images"
+                                    accept="image/png, image/gif, image/jpeg" multiple required>
+                                <span style="color: red">(Choose multiple images should be GIF,PNG,JPEG and total size
+                                    should be 1 mb)</span>
 
                                 <div class="col-md-12">
                                     <div class="mt-1 text-center">
@@ -159,21 +163,26 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.update.award') }}" id= "updateAward" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.update.award') }}" class="ajaxForm" id="updateAward"
+                            method="post" enctype="multipart/form-data" onSubmit="return checkForm();">
 
                             @csrf
                             <input type="hidden" name="id" id="award_id">
                             <div class="modal-body">
                                 <label for="maskPhone" class="form-label">Title</label>
                                 <input class="form-control mb-2" type="text" placeholder="title" name="title"
-                                    id="title" >
+                                    id="title">
 
                                 <label for="maskPhone" class="form-label">Description</label>
                                 <textarea class="form-control mb-2" name="description" id="description">
                                 </textarea>
 
                                 <label for="maskPhone" class="form-label">Images</label>
-                                <input class="form-control mb-2" type="file" name="image[]" id="images" multiple>
+                                <input class="form-control mb-2" type="file" name="image[]" id="images"
+                                    accept="image/png, image/gif, image/jpeg" multiple>
+                                <span style="color: red">(Choose multiple images should be GIF,PNG,JPEG and total size
+                                    should be 1 mb)</span>
+
 
                                 <div class="col-md-12">
                                     <div class="mt-1 text-center">
@@ -194,51 +203,50 @@
 
         </section>
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <style>
-        .error
-        {
-         color:#FF0000;
-         display: block;
+        .error {
+            color: #FF0000;
+            display: block;
         }
-        </style>
+    </style>
     <script>
-        $(document).ready(function () {
-        $('#addAward').validate({ // initialize the plugin
-            rules: {
-                title: {
-                    required: true
-                },
-                description: {
-                    required: true,
-                },
-                images: {
-                    required: true,
+        $(document).ready(function() {
+            $('#addAward').validate({ // initialize the plugin
+                rules: {
+                    title: {
+                        required: true
+                    },
+                    description: {
+                        required: true,
+                    },
+                    images: {
+                        required: true,
 
-                },
-            }
+                    },
+                }
+            });
         });
-    });
     </script>
     <script>
-        $(document).ready(function () {
-        $('#updateAward').validate({ // initialize the plugin
-            rules: {
-                title: {
-                    required: true
-                },
-                description: {
-                    required: true,
-                },
-                images: {
-                    required: true,
-                },
+        $(document).ready(function() {
+            $('#updateAward').validate({ // initialize the plugin
+                rules: {
+                    title: {
+                        required: true
+                    },
+                    description: {
+                        required: true,
+                    },
+                    images: {
+                        required: true,
+                    },
 
-            }
+                }
+            });
         });
-    });
     </script>
 
 
@@ -277,5 +285,4 @@
             });
         });
     </script>
-
 @endsection

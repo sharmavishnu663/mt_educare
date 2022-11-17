@@ -100,29 +100,29 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.invester.presentation') }}" id="addInvestorPresentation" method="post"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.invester.presentation') }}" id="addInvestorPresentation"
+                            method="post" enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <label for="maskPhone" class="form-label">File Invest Year</label>
                                     <input class="form-control mb-2" type="text" placeholder="File Investor Year"
-                                    id="invest_year"
-                                        name="invest_year" required>
+                                        id="invest_year" name="invest_year" required>
 
                                     <label for="maskPhone" class="form-label">File Quarter Name</label>
                                     <input class="form-control mb-2" type="text" placeholder="File Quarter Name"
-                                    id="quarter_name" name="quarter_name" required>
+                                        id="quarter_name" name="quarter_name" required>
 
                                     <label for="maskPhone" class="form-label">File Quarter Code</label>
                                     <input class="form-control mb-2" type="text" placeholder="File Quarter Code"
-                                    id="quarter_code"   name="quarter_code" required>
+                                        id="quarter_code" name="quarter_code" required>
 
 
                                     <label for="maskPhone" class="form-label">File upload</label>
                                     <div class="mb-0">
-                                        <input class="form-control" type="file" name="file_name" id="filename" accept=".pdf" required>
+                                        <input class="form-control" type="file" name="file_name" id="filename"
+                                            accept=".pdf" required>
                                     </div>
                                 </div>
                             </div>
@@ -148,8 +148,7 @@
                                 aria-label="Close"></button>
                         </div>
                         <form action="{{ route('admin.edit.invester.presentation') }}" method="post"
-                        id="updatePresentation"
-                            enctype="multipart/form-data">
+                            id="updatePresentation" enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <input type="hidden" name="id" id="count_id">
@@ -188,63 +187,62 @@
 
         </section>
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <style>
-        .error
-        {
-         color:#FF0000;
-         display: block;
+        .error {
+            color: #FF0000;
+            display: block;
         }
-        </style>
+    </style>
     <script>
-        $(document).ready(function () {
-        $('#addInvestorPresentation').validate({ // initialize the plugin
-            rules: {
-                invest_year: {
-                    required: true
-                },
-                quarter_name: {
-                    required: true,
-                    number:true
-                },
-                quarter_code: {
-                    required: true,
+        $(document).ready(function() {
+            $('#addInvestorPresentation').validate({ // initialize the plugin
+                rules: {
+                    invest_year: {
+                        required: true
+                    },
+                    quarter_name: {
+                        required: true,
+                        number: true
+                    },
+                    quarter_code: {
+                        required: true,
 
-                },
-                filename: {
-                    required: true,
-                    extension: "pdf"
-                },
+                    },
+                    filename: {
+                        required: true,
+                        extension: "pdf"
+                    },
 
 
-            }
+                }
+            });
         });
-    });
     </script>
     <script>
-        $(document).ready(function () {
-        $('#updatePresentation').validate({ // initialize the plugin
-            rules: {
-                invest_year: {
-                    required: true
-                },
-                quarter_name: {
-                    required: true,
-                    number:true
-                },
-                quarter_code: {
-                    required: true,
+        $(document).ready(function() {
+            $('#updatePresentation').validate({ // initialize the plugin
+                rules: {
+                    invest_year: {
+                        required: true
+                    },
+                    quarter_name: {
+                        required: true,
+                        number: true
+                    },
+                    quarter_code: {
+                        required: true,
 
-                },
-                filename: {
-                    required: true,
-                    extension: "pdf"
-                },
-            }
+                    },
+                    filename: {
+                        required: true,
+                        extension: "pdf"
+                    },
+                }
+            });
         });
-    });
     </script>
 
     <script>

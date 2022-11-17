@@ -36,7 +36,7 @@ class KeyManagementController extends Controller
             return back()->withErrors($validator)->withInput();
         } else {
             $success = KeyManagement::create($requestData);
-            return Redirect::route('admin.keyManagement')->with('success', 'Management added successfully!');
+            return Redirect::route('admin.keyManagement')->with('success', 'successfully submitted!');
         }
     }
 
@@ -58,13 +58,13 @@ class KeyManagementController extends Controller
             unset($requestData['_token']);
 
             KeyManagement::where('id', $request->id)->update($requestData);
-            return Redirect::route('admin.keyManagement')->with('success', 'Management updated successfully!');
+            return Redirect::route('admin.keyManagement')->with('success', 'successfully submitted!');
         }
     }
 
     public function deleteKeyMember($id)
     {
         KeyManagement::where('id', $id)->delete();
-        return Redirect::route('admin.keyManagement')->with('success', 'Management delete successfully!');
+        return Redirect::route('admin.keyManagement')->with('success', 'successfully submitted!');
     }
 }

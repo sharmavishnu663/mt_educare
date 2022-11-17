@@ -37,7 +37,7 @@ class DemoVideoController extends Controller
             'title' => 'required',
             'tag_name' => 'required',
             'description' => 'required',
-            // 'video_name' => 'required',
+            'video_name' => 'required',
 
         ];
         $requestData = $request->all();
@@ -54,7 +54,7 @@ class DemoVideoController extends Controller
         // }
 
         DemoVideo::create($requestData);
-        return Redirect::route('admin.demoVideo')->with('success', 'Category standard Video added successfully!');
+        return Redirect::route('admin.demoVideo')->with('success', 'successfully submitted!');
     }
 
     public function updateDemoVideo(Request $request)
@@ -65,6 +65,7 @@ class DemoVideoController extends Controller
             'title' => 'required',
             'tag_name' => 'required',
             'description' => 'required',
+            'video_name' => 'required',
         ];
 
         $requestData = $request->all();
@@ -92,7 +93,7 @@ class DemoVideoController extends Controller
             // dd($requestData);
             $contactAdd = DemoVideo::where('id', $video->id)->update($requestData);
 
-            return Redirect::route('admin.demoVideo')->with('success', 'Category standard video update successfully!');
+            return Redirect::route('admin.demoVideo')->with('success', 'successfully submitted!');
         }
     }
 
@@ -100,6 +101,6 @@ class DemoVideoController extends Controller
     public function deleteDemoVideo($id)
     {
         DemoVideo::where('id', $id)->delete();
-        return Redirect::route('admin.demoVideo')->with('success', 'Category standard Video delete successfully!');
+        return Redirect::route('admin.demoVideo')->with('success', 'successfully submitted!');
     }
 }

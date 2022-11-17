@@ -124,7 +124,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="{{ route('admin.add.demoVideo') }}" method="post" enctype="multipart/form-data"
-                            id="addVideo" onsubmit="return formsubmit(this)">
+                            id="addVideo" onsubmit="return formsubmit(this)" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -140,7 +140,7 @@
                                     <input class="form-control mb-2" type="text" placeholder="title" name="title"
                                         required>
                                     <label for="maskPhone" class="form-label">Description</label>
-                                    <textarea class="form-control mb-2" type="text" placeholder="description" name="description" required> </textarea>
+                                    <textarea class="form-control mb-2" type="text" placeholder="description" name="description" required></textarea>
 
                                     <label for="maskPhone" class="form-label">Tag</label>
                                     <input class="form-control mb-2" type="text" placeholder="tag" name="tag_name"
@@ -193,7 +193,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.edit.demoVideo') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.edit.demoVideo') }}" method="post" enctype="multipart/form-data"
+                            class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -211,7 +212,7 @@
                                         id="title" required>
                                     <label for="maskPhone" class="form-label">Description</label>
                                     <textarea class="form-control mb-2" type="text" placeholder="description" name="description" id="description"
-                                        required> </textarea>
+                                        required></textarea>
                                     <label for="maskPhone" class="form-label">Tag</label>
                                     <input class="form-control mb-2" type="text" placeholder="tag" name="tag_name"
                                         id="tag_name" required>
@@ -248,7 +249,7 @@
         </section>
         <!-- /.content -->
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script>
         Filevalidation = () => {
             const fi = document.getElementById('file');

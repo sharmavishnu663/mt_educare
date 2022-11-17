@@ -51,7 +51,7 @@ class AwardController extends Controller
             }
             $requestData['image'] = json_encode($imageData);
             Award::create($requestData);
-            return Redirect::route('admin.award')->with('success', 'Award added successfully!');
+            return Redirect::route('admin.award')->with('success', 'successfully submitted!');
         }
     }
 
@@ -90,13 +90,13 @@ class AwardController extends Controller
             }
 
             Award::where('id', $request->id)->update($requestData);
-            return Redirect::route('admin.award')->with('success', 'Award updated successfully!');
+            return Redirect::route('admin.award')->with('success', 'successfully submitted!');
         }
     }
 
     public function deleteAward($id)
     {
         Award::where('id', $id)->delete();
-        return Redirect::route('admin.award')->with('success', 'Award delete successfully!');
+        return Redirect::route('admin.award')->with('success', 'successfully submitted!');
     }
 }

@@ -50,7 +50,7 @@ class BoardOfDirectorController extends Controller
                 // $gallary->save();
             }
             $success = BoardOfDirector::create($requestData);
-            return Redirect::route('admin.boardOfDirectors')->with('success', 'Management added successfully!');
+            return Redirect::route('admin.boardOfDirectors')->with('success', 'successfully submitted!');
         }
     }
 
@@ -81,13 +81,13 @@ class BoardOfDirectorController extends Controller
                 // $gallary->save();
             }
             BoardOfDirector::where('id', $request->id)->update($requestData);
-            return Redirect::route('admin.boardOfDirectors')->with('success', 'Management updated successfully!');
+            return Redirect::route('admin.boardOfDirectors')->with('success', 'successfully submitted!');
         }
     }
 
     public function deleteMember($id)
     {
         BoardOfDirector::where('id', $id)->delete();
-        return Redirect::route('admin.boardOfDirectors')->with('success', 'Management delete successfully!');
+        return Redirect::route('admin.boardOfDirectors')->with('success', 'successfully submitted!');
     }
 }

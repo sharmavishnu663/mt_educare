@@ -43,7 +43,7 @@
 
                     <li class="nav-item">
                         <a data-bs-toggle="collapse"
-                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.courselist' || Route::current()->getName() == 'admin.coursedetail' ? 'active' : '' }} "
+                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.courselist' || Route::current()->getName() == 'admin.coursedetail' || Route::current()->getName() == 'admin.demoVideo' || Route::current()->getName() == 'admin.classCategory' || Route::current()->getName() == 'admin.subjects' ? '' : '' }} "
                             aria-expanded="false" href="#ui-pages">
                             <span class="sidebar-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24"
@@ -56,26 +56,35 @@
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Course</span>
                         </a>
-                        <ul id="ui-pages" class="sidebar-dropdown list-unstyled collapse">
+                        <ul id="ui-pages"
+                            class="sidebar-dropdown list-unstyled collapse {{ Route::current()->getName() == 'admin.courselist' || Route::current()->getName() == 'admin.coursedetail' || Route::current()->getName() == 'admin.demoVideo' || Route::current()->getName() == 'admin.classCategory' || Route::current()->getName() == 'admin.subjects' ? 'show' : '' }}">
 
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item "><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.courselist' ? 'active' : '' }}"
                                     href="{{ route('admin.courselist') }}">Category List</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.coursedetail' ? 'active' : '' }}"
                                     href="{{ route('admin.coursedetail') }}">Category Detail</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.classCategory') }}">
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.classCategory' ? 'active' : '' }}"
+                                    href="{{ route('admin.classCategory') }}">
                                     Standard List</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.demoVideo') }}">
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.demoVideo' ? 'active' : '' }}"
+                                    href="{{ route('admin.demoVideo') }}">
                                     Standard
                                     Videos</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.subjects') }}">
-                                      Subjects</a></li>
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.subjects' ? 'active' : '' }}"
+                                    href="{{ route('admin.subjects') }}">
+                                    Subjects</a></li>
 
                         </ul>
                     </li>
 
                     <li class="nav-item">
                         <a data-bs-toggle="collapse"
-                            class="nav-link d-flex align-items-center text-truncate  {{ Route::current()->getName() == 'admin.states' || Route::current()->getName() == 'admin.centers' ? 'active' : '' }}"
+                            class="nav-link d-flex align-items-center text-truncate  {{ Route::current()->getName() == 'admin.states' || Route::current()->getName() == 'admin.centers' || Route::current()->getName() == 'admin.cities' ? '' : '' }}"
                             aria-expanded="false" href="#ui-pages1">
                             <span class="sidebar-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -87,14 +96,18 @@
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Centers</span>
                         </a>
-                        <ul id="ui-pages1" class="sidebar-dropdown list-unstyled collapse">
+                        <ul id="ui-pages1"
+                            class="sidebar-dropdown list-unstyled collapse {{ Route::current()->getName() == 'admin.states' || Route::current()->getName() == 'admin.centers' || Route::current()->getName() == 'admin.cities' ? 'show' : '' }}">
 
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.states' ? 'active' : '' }}"
                                     href="{{ route('admin.states') }}">State</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.cities' ? 'active' : '' }}"
                                     href="{{ route('admin.cities') }}">City</a>
                             </li>
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.centers' ? 'active' : '' }}"
                                     href="{{ route('admin.centers') }}">Centers</a>
                             </li>
 
@@ -142,7 +155,7 @@
 
                     <li class="nav-item">
                         <a data-bs-toggle="collapse"
-                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.boardOfDirectors' || Route::current()->getName() == 'admin.keyManagement' || Route::current()->getName() == 'admin.boardCommittee' ? 'active' : '' }}"
+                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.boardOfDirectors' || Route::current()->getName() == 'admin.keyManagement' || Route::current()->getName() == 'admin.boardCommittee' ? '' : '' }}"
                             aria-expanded="false" href="#ui-pages2">
                             <span class="sidebar-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -154,14 +167,18 @@
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Management</span>
                         </a>
-                        <ul id="ui-pages2" class="sidebar-dropdown list-unstyled collapse">
+                        <ul id="ui-pages2"
+                            class="sidebar-dropdown list-unstyled collapse {{ Route::current()->getName() == 'admin.boardOfDirectors' || Route::current()->getName() == 'admin.keyManagement' || Route::current()->getName() == 'admin.boardCommittee' ? 'show' : '' }}">
 
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.boardOfDirectors' ? 'active' : '' }}"
                                     href="{{ route('admin.boardOfDirectors') }}">Board of Directors</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link"
-                                    href="{{ route('admin.keyManagement') }}">Key Management</a>
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.keyManagement' ? 'active' : '' }}"
+                                    href="{{ route('admin.keyManagement') }} ">Key Management</a>
                             </li>
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.boardCommittee' ? 'active' : '' }}"
                                     href="{{ route('admin.boardCommittee') }}"> Board Committee</a>
                             </li>
 
@@ -170,7 +187,7 @@
 
                     <li class="nav-item">
                         <a data-bs-toggle="collapse"
-                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.gallary' || Route::current()->getName() == 'admin.gallery.video' ? 'active' : '' }} "
+                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.gallery.category' || Route::current()->getName() == 'admin.gallary' || Route::current()->getName() == 'admin.gallery.video' ? '' : '' }} "
                             aria-expanded="false" href="#ui-pages3">
                             <span class="sidebar-icon">
                                 <i class="fa fa-solid fa-image"></i>
@@ -178,13 +195,17 @@
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Gallery</span>
                         </a>
-                        <ul id="ui-pages3" class="sidebar-dropdown list-unstyled collapse">
+                        <ul id="ui-pages3"
+                            class="sidebar-dropdown list-unstyled collapse {{ Route::current()->getName() == 'admin.gallery.category' || Route::current()->getName() == 'admin.gallary' || Route::current()->getName() == 'admin.gallery.video' ? 'show' : '' }}">
 
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.gallery.category' ? 'active' : '' }}"
                                     href="{{ route('admin.gallery.category') }}">Gallery Category</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.gallary' ? 'active' : '' }}"
                                     href="{{ route('admin.gallary') }}">Gallery Image</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.gallery.video' ? 'active' : '' }}"
                                     href="{{ route('admin.gallery.video') }}">Gallery Video</a>
                             </li>
 
@@ -230,7 +251,7 @@
 
                     <li class="nav-item">
                         <a data-bs-toggle="collapse"
-                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.privacy_policy' || Route::current()->getName() == 'admin.terms' || Route::current()->getName() == 'admin.disclaimer' ? 'active' : '' }} "
+                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.privacy_policy' || Route::current()->getName() == 'admin.terms' || Route::current()->getName() == 'admin.disclaimer' ? '' : '' }} "
                             aria-expanded="false" href="#ui-pages4">
                             <span class="sidebar-icon">
                                 <i class="fa fa-solid fa-layer-group"></i>
@@ -238,14 +259,19 @@
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Policy</span>
                         </a>
-                        <ul id="ui-pages4" class="sidebar-dropdown list-unstyled collapse">
+                        <ul id="ui-pages4"
+                            class="sidebar-dropdown list-unstyled collapse {{ Route::current()->getName() == 'admin.privacy_policy' || Route::current()->getName() == 'admin.terms' || Route::current()->getName() == 'admin.disclaimer' ? 'show' : '' }} ">
 
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.privacy_policy' ? 'active' : '' }} "
                                     href="{{ route('admin.privacy_policy') }}">Privacy Policy</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link"
-                                    href="{{ route('admin.terms') }}">Terms & Conditions</a>
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.terms' ? 'active' : '' }} "
+                                    href="{{ route('admin.terms') }}">Terms
+                                    & Conditions</a>
                             </li>
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.disclaimer' ? 'active' : '' }} "
                                     href="{{ route('admin.disclaimer') }}">Disclaimer</a>
                             </li>
 
@@ -267,7 +293,7 @@
 
                     <li class="nav-item">
                         <a data-bs-toggle="collapse"
-                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.corp.governance' || Route::current()->getName() == 'admin.invester.presentation' ? 'active' : '' }} "
+                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.corp.governance' || Route::current()->getName() == 'admin.invester.presentation' ? '' : '' }} "
                             aria-expanded="false" href="#ui-pages5">
                             <span class="sidebar-icon">
                                 <i class="fa fa-solid fa-users"></i>
@@ -275,11 +301,14 @@
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Investor Relations</span>
                         </a>
-                        <ul id="ui-pages5" class="sidebar-dropdown list-unstyled collapse">
+                        <ul id="ui-pages5"
+                            class="sidebar-dropdown list-unstyled collapse {{ Route::current()->getName() == 'admin.corp.governance' || Route::current()->getName() == 'admin.invester.presentation' ? 'show' : '' }}">
 
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.corp.governance' ? 'active' : '' }}"
                                     href="{{ route('admin.corp.governance') }}">Corporate Governance</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.invester.presentation' ? 'active' : '' }}"
                                     href="{{ route('admin.invester.presentation') }}">Investor Presentations</a>
                             </li>
 
@@ -290,7 +319,7 @@
 
                     <li class="nav-item">
                         <a data-bs-toggle="collapse"
-                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.release.category' || Route::current()->getName() == 'admin.press.release' ? 'active' : '' }} "
+                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.release.category' || Route::current()->getName() == 'admin.press.release' ? '' : '' }} "
                             aria-expanded="false" href="#ui-pages6">
                             <span class="sidebar-icon">
                                 <i class="fa fa-solid fa-newspaper"></i>
@@ -298,12 +327,15 @@
                             <!--Sidebar nav text-->
                             <span class="sidebar-text"> Press Release</span>
                         </a>
-                        <ul id="ui-pages6" class="sidebar-dropdown list-unstyled collapse">
+                        <ul id="ui-pages6"
+                            class="sidebar-dropdown list-unstyled collapse {{ Route::current()->getName() == 'admin.release.category' || Route::current()->getName() == 'admin.press.release' ? 'show' : '' }}">
 
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.release.category' ? 'active' : '' }}"
                                     href="{{ route('admin.release.category') }}">Releases Category</a>
                             </li>
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.press.release' ? 'active' : '' }}"
                                     href="{{ route('admin.press.release') }}">Releases</a>
                             </li>
                         </ul>
@@ -311,7 +343,7 @@
 
                     <li class="nav-item">
                         <a data-bs-toggle="collapse"
-                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.report.category' || Route::current()->getName() == 'admin.report' ? 'active' : '' }} "
+                            class="nav-link d-flex align-items-center text-truncate {{ Route::current()->getName() == 'admin.report.category' || Route::current()->getName() == 'admin.report' ? '' : '' }} "
                             aria-expanded="false" href="#ui-pages7">
                             <span class="sidebar-icon">
                                 <i class="fa fa-solid fa-file"></i>
@@ -319,12 +351,15 @@
                             <!--Sidebar nav text-->
                             <span class="sidebar-text">Reports</span>
                         </a>
-                        <ul id="ui-pages7" class="sidebar-dropdown list-unstyled collapse">
+                        <ul id="ui-pages7"
+                            class="sidebar-dropdown list-unstyled collapse {{ Route::current()->getName() == 'admin.report.category' || Route::current()->getName() == 'admin.report' ? 'show' : '' }}">
 
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.report.category' ? 'active' : '' }}"
                                     href="{{ route('admin.report.category') }}">Report Category</a>
                             </li>
-                            <li class="sidebar-item"><a class="sidebar-link"
+                            <li class="sidebar-item"><a
+                                    class="sidebar-link {{ Route::current()->getName() == 'admin.report' ? 'active' : '' }}"
                                     href="{{ route('admin.report') }}">Reports</a>
                             </li>
                         </ul>

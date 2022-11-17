@@ -40,7 +40,7 @@ class CityController extends Controller
         } else {
 
             $success = City::create($requestData);
-            return Redirect::route('admin.cities')->with('success', 'Cities added successfully!');
+            return Redirect::route('admin.cities')->with('success', 'successfully submitted!');
         }
     }
 
@@ -60,13 +60,13 @@ class CityController extends Controller
         } else {
             unset($requestData['_token']);
             City::where('id', $request->id)->update($requestData);
-            return Redirect::route('admin.cities')->with('success', 'City updated successfully!');
+            return Redirect::route('admin.cities')->with('success', 'successfully submitted!');
         }
     }
 
     public function deleteCity($id)
     {
         City::where('id', $id)->delete();
-        return Redirect::route('admin.cities')->with('success', 'City delete successfully!');
+        return Redirect::route('admin.cities')->with('success', 'successfully submitted!');
     }
 }

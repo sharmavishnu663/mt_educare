@@ -78,8 +78,8 @@
                                                                 data-candidate_profile="{{ @$job->candidate_profile }}"
                                                                 data-description="{{ @$job->description }}"
                                                                 data-status="{{ @$job->status }}"><i
-                                                                      class="fa fa-edit"></i></a>
-                                                          <a class="delete-material"
+                                                                    class="fa fa-edit"></i></a>
+                                                            <a class="delete-material"
                                                                 href="{{ route('delete.job', @$job->id) }}"
                                                                 title="delete logo"
                                                                 onClick="return  confirm('Are you sure you want to delete ?')"><i
@@ -109,22 +109,25 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.job') }}" id="addJob" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.job') }}" id="addJob" method="post"
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
                                 <label for="maskPhone" class="form-label">Title</label>
-                                <input class="form-control mb-2" type="text" placeholder="title" name="title"  id="title" required>
+                                <input class="form-control mb-2" type="text" placeholder="title" name="title"
+                                    id="title" required>
 
                                 <label for="maskPhone" class="form-label">Requirnments of Candidate</label>
                                 <textarea class="form-control mb-2" placeholder="Experience and CTC" name="requirement" id="requirement" required></textarea>
 
                                 <label for="maskPhone" class="form-label">Location</label>
-                                <input class="form-control mb-2" type="text" placeholder="location" name="location" id="location"
-                                    required>
+                                <input class="form-control mb-2" type="text" placeholder="location" name="location"
+                                    id="location" required>
 
                                 <label for="maskPhone" class="form-label">Candidate and Profile</label>
-                                <textarea class="form-control mb-2" name="candidate_profile" placeholder="candidate profile" id="candidate_profile" required>
+                                <textarea class="form-control mb-2" name="candidate_profile" placeholder="candidate profile" id="candidate_profile"
+                                    required>
                                 </textarea>
 
                                 <label for="maskPhone" class="form-label">Description</label>
@@ -157,7 +160,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.edit.job') }}" id="updateJob" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.edit.job') }}" id="updateJob" method="post"
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <input type="hidden" name="id" id="job_id">
@@ -202,77 +206,76 @@
 
         </section>
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <style>
-        .error
-        {
-         color:#FF0000;
-         display: block;
+        .error {
+            color: #FF0000;
+            display: block;
         }
-        </style>
+    </style>
     <script>
-        $(document).ready(function () {
-        $('#addJob').validate({ // initialize the plugin
-            rules: {
-                title: {
-                    required: true
-                },
-                requirement: {
-                    required: true,
+        $(document).ready(function() {
+            $('#addJob').validate({ // initialize the plugin
+                rules: {
+                    title: {
+                        required: true
+                    },
+                    requirement: {
+                        required: true,
 
-                },
-                location: {
-                    required: true,
-                },
+                    },
+                    location: {
+                        required: true,
+                    },
 
-                description:any{
-                    required: true,
+                    description: any {
+                        required: true,
+                    }
+
+                    candidate_profile: {
+                        required: true,
+                    },
+                    status: {
+                        required: true,
+
+                    },
+
                 }
-
-                candidate_profile: {
-                    required: true,
-                },
-                status: {
-                    required: true,
-
-                },
-
-            }
+            });
         });
-    });
     </script>
     <script>
-        $(document).ready(function () {
-        $('#updateJob').validate({ // initialize the plugin
-            rules: {
-                title: {
-                    required: true
-                },
-                requirement: {
-                    required: true,
-                    number:true
-                },
-                location: {
-                    required: true,
+        $(document).ready(function() {
+            $('#updateJob').validate({ // initialize the plugin
+                rules: {
+                    title: {
+                        required: true
+                    },
+                    requirement: {
+                        required: true,
+                        number: true
+                    },
+                    location: {
+                        required: true,
 
-                },
+                    },
 
-                description:any{
-                    required: true,
+                    description: any {
+                        required: true,
+                    }
+
+                    candidate_profile: {
+                        required: true,
+                    },
+                    status: {
+                        required: true,
+
+                    },
                 }
-
-                candidate_profile: {
-                    required: true,
-                },
-                status: {
-                    required: true,
-
-                },
-            }
+            });
         });
-    });
     </script>
 
     <script>

@@ -90,11 +90,12 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel">Add Team
+                            <h5 class="modal-title" id="exampleModalToggleLabel">Add City
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.city') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.city') }}" method="post" enctype="multipart/form-data"
+                            class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -110,7 +111,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email-1">Name</label>
+                                        <label for="email-1">City Name</label>
                                         <input type="text" class="form-control AlphabetsOnly" name="name"
                                             value="{{ old('name') }}" required>
                                     </div>
@@ -132,7 +133,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel">Edit Team
+                            <h5 class="modal-title" id="exampleModalToggleLabel">Edit City
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -153,7 +154,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email-1">Name</label>
+                                        <label for="email-1">City Name</label>
                                         <input type="text" id="name" class="form-control AlphabetsOnly"
                                             name="name" value="{{ old('name') }}" required>
                                     </div>
@@ -171,7 +172,7 @@
 
         </section>
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
 
     <script>
         $(".js-edit-logo").on('click', function(e) {

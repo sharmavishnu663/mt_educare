@@ -95,25 +95,26 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.boardOfDirectors') }}" id ="addBoardDirector" method="post"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.boardOfDirectors') }}" id="addBoardDirector" method="post"
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <label for="maskPhone" class="form-label">Name</label>
-                                    <input class="form-control mb-2" type="text" placeholder="Name" name="name" id="name"
-                                        required>
+                                    <input class="form-control mb-2" type="text" placeholder="Name" name="name"
+                                        id="name" required>
                                     <label for="maskPhone" class="form-label">Designation</label>
-                                    <input class="form-control mb-2" type="text" placeholder="designation" id="designation"
-                                        name="designation" required>
+                                    <input class="form-control mb-2" type="text" placeholder="designation"
+                                        id="designation" name="designation" required>
 
                                     <label for="maskPhone" class="form-label">Image</label>
                                     <div class="mb-0">
-                                        <input class="form-control" type="file" name="image"
-                                          id="image"  accept="image/png, image/gif, image/jpeg" required>
+                                        <input class="form-control" type="file" name="image" id="image"
+                                            accept="image/png, image/gif, image/jpeg" required>
                                     </div>
-                                    <span>Image should be PNG,GIF,JPEG only</span>
+                                    <span style="color: red">(Image should be PNG,GIF,JPEG only)</span>
+
                                 </div>
                             </div>
 
@@ -136,7 +137,7 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.update.boardOfDirectors') }}" method="post"
+                        <form action="{{ route('admin.update.boardOfDirectors') }}" class="ajaxForm" method="post"
                             enctype="multipart/form-data">
 
                             @csrf
@@ -156,7 +157,7 @@
                                             accept="image/png, image/gif, image/jpeg" onchange="Filevalidation(this)">
                                         <img id="profile_img">
                                     </div>
-                                    <span>Image should be PNG,GIF,JPEG only</span>
+                                    <span style="color: red">(Image should be PNG,GIF,JPEG only)</span>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -172,33 +173,32 @@
 
         </section>
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <style>
-        .error
-        {
-         color:#FF0000;
-         display: block;
+        .error {
+            color: #FF0000;
+            display: block;
         }
-        </style>
+    </style>
     <script>
-        $(document).ready(function () {
-        $('#addBoardDirector').validate({ // initialize the plugin
-            rules: {
-                name: {
-                    required: true
-                },
-                designation: {
-                    required: true,
-                },
-                profile_img: {
-                    required: true,
+        $(document).ready(function() {
+            $('#addBoardDirector').validate({ // initialize the plugin
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    designation: {
+                        required: true,
+                    },
+                    profile_img: {
+                        required: true,
 
-                },
-            }
+                    },
+                }
+            });
         });
-    });
     </script>
     <script>
         Filevalidation = () => {
@@ -245,5 +245,4 @@
             }
         });
     </script>
-
 @endsection

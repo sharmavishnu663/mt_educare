@@ -56,7 +56,8 @@
                                                         <td>{{ @$csr->title }}</td>
                                                         <td>{{ substr($csr->description, 0, 100) }}</td>
                                                         <td>
-                                                            <div><img class="course-img" src="{{ $csr->image }}"
+                                                            <div><img class="course-img"
+                                                                    src="{{ asset('storage/' . $csr->image) }}"
                                                                     width="150px" height="150px" /></div>
                                                         </td>
 
@@ -66,7 +67,7 @@
                                                                 data-id="{{ @$csr->id }}"
                                                                 data-title="{{ $csr->title }}"
                                                                 data-description="{{ $csr->description }}"
-                                                                data-image="{{ $csr->image }}"><i
+                                                                data-image="{{ asset('storage/' . $csr->image) }}"><i
                                                                     class="fa fa-edit"></i></a>
                                                             <a class="delete-material"
                                                                 href="{{ route('delete.csr', @$csr->id) }}"
@@ -98,7 +99,8 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.csr') }}" id="addCSR" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.csr') }}" id="addCSR" method="post"
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -109,14 +111,15 @@
                                     <input class="form-control mb-2" type="text" placeholder="title" name="title"
                                         required>
                                     <label for="maskPhone" class="form-label">Description</label>
-                                    <textarea class="form-control mb-2" type="text" placeholder="description" name="description" required> </textarea>
+                                    <textarea class="form-control mb-2" type="text" placeholder="description" name="description" id="description"
+                                        required></textarea>
 
                                     <label for="maskPhone" class="form-label">Image</label>
                                     <div class="mb-2">
                                         <input class="form-control" type="file" name="image"
                                             accept="image/png, image/gif, image/jpeg" required>
                                     </div>
-                                    <span>Image should be PNG,GIF,JPEG only</span>
+                                    <span style="color: red">(Image should be PNG,GIF,JPEG and 1mb only)</span>
 
                                 </div>
                             </div>
@@ -139,7 +142,8 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.edit.csr') }}" id="updateCSR" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.edit.csr') }}" id="updateCSR" method="post"
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -157,7 +161,10 @@
                                     <label for="maskPhone" class="form-label">Image</label>
                                     <div class="mb-2">
                                         <input class="form-control" type="file" name="image"
-                                            accept="image/png, image/gif, image/jpeg">
+                                            accept="image/png, image/gif, image/jpeg"> <span style="color: red">(Image
+                                            should be PNG,GIF,JPEG and 1mb only)</span>
+
+
                                         <img class="avatar lg rounded-circle me-2 mb-2" alt="" id="team_image">
 
                                     </div>
@@ -177,55 +184,53 @@
         </section>
         <!-- /.content -->
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <style>
-        .error
-        {
-         color:#FF0000;
-         display: block;
+        .error {
+            color: #FF0000;
+            display: block;
         }
-        </style>
+    </style>
     <script>
-        $(document).ready(function () {
-        $('#addCSR').validate({ // initialize the plugin
-            rules: {
-                title: {
-                    required: true
-                },
-                description: {
-                    required: true,
+        $(document).ready(function() {
+            $('#addCSR').validate({ // initialize the plugin
+                rules: {
+                    title: {
+                        required: true
+                    },
+                    description: {
+                        required: true,
 
-                },
-                team_image: {
-                    required: true,
+                    },
+                    team_image: {
+                        required: true,
 
-                },
+                    },
 
-            }
+                }
+            });
         });
-    });
     </script>
     <script>
-        $(document).ready(function () {
-        $('#updatePresentation').validate({ // initialize the plugin
-            rules: {
-                title: {
-                    required: true
-                },
-                description: {
-                    required: true,
-                    number:true
-                },
-                team_image: {
-                    required: true,
+        $(document).ready(function() {
+            $('#updatePresentation').validate({ // initialize the plugin
+                rules: {
+                    title: {
+                        required: true
+                    },
+                    description: {
+                        required: true,
+                    },
+                    team_image: {
+                        required: true,
 
-                },
+                    },
 
-            }
+                }
+            });
         });
-    });
     </script>
 
     <script>

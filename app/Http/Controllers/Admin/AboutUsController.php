@@ -60,7 +60,7 @@ class AboutUsController extends Controller
             unset($requestData['revenue']);
             unset($requestData['students']);
             $success = AboutUs::create($requestData);
-            return Redirect::route('admin.about')->with('success', 'About details added successfully!');
+            return Redirect::route('admin.about')->with('success', 'successfully submitted!');
         }
     }
 
@@ -98,7 +98,7 @@ class AboutUsController extends Controller
             unset($requestData['revenue']);
             unset($requestData['students']);
             AboutUs::where('id', $request->id)->update($requestData);
-            return Redirect::route('admin.about')->with('success', 'About updated successfully!');
+            return Redirect::route('admin.about')->with('success', 'successfully submitted!');
         }
     }
 
@@ -106,6 +106,6 @@ class AboutUsController extends Controller
     public function deleteAbouts($id)
     {
         AboutUs::where('id', $id)->delete();
-        return Redirect::route('admin.about')->with('success', 'About delete successfully!');
+        return Redirect::route('admin.about')->with('success', 'successfully submitted!');
     }
 }

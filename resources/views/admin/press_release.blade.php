@@ -104,13 +104,15 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.press.release') }}" id="addRelease" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.press.release') }}" id="addRelease" method="post"
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
                                 <div class="card-body">
                                     <label for="maskPhone" class="form-label">Release Category</label>
-                                    <select class="form-control mb-2" name="release_category_id" id="release_category_id" required>
+                                    <select class="form-control mb-2" name="release_category_id" id="release_category_id"
+                                        required>
                                         <option disabled selected> Please select Category</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -118,23 +120,24 @@
                                     </select>
 
                                     <label for="maskPhone" class="form-label">File Title</label>
-                                    <input class="form-control mb-2" type="text" placeholder="File Title"  id="file_title"
+                                    <input class="form-control mb-2" type="text" placeholder="File Title" id="file_title"
                                         name="file_title" required>
 
                                     <label for="maskPhone" class="form-label">File Quarter Name</label>
-                                    <input class="form-control mb-2" type="text" placeholder="File Quarter Name"  id="invest_quater"
-                                        name="invest_quater" required>
+                                    <input class="form-control mb-2" type="text" placeholder="File Quarter Name"
+                                        id="invest_quater" name="invest_quater" required>
 
                                     <label for="maskPhone" class="form-label">File Release Date</label>
-                                    <input class="form-control mb-2" type="date" placeholder="File Release Date"  id="date"
-                                        name="date" required>
+                                    <input class="form-control mb-2" type="date" placeholder="File Release Date"
+                                        id="date" name="date" required>
 
 
                                     <label for="maskPhone" class="form-label">File upload</label>
                                     <div class="mb-0">
-                                        <input class="form-control" type="file" name="file_name" id="filename"  accept=".pdf" required>
+                                        <input class="form-control" type="file" name="file_name" id="filename"
+                                            accept=".pdf" required>
                                     </div>
-                                    <span>File should be PDF only.</span>
+                                    <span style="color: red">(File should be PDF and max size 1mb only.)</span>
                                 </div>
                             </div>
 
@@ -159,7 +162,7 @@
                                 aria-label="Close"></button>
                         </div>
                         <form action="{{ route('admin.edit.press.release') }}" id="updateRelease" method="post"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <input type="hidden" name="id" id="count_id">
@@ -192,7 +195,7 @@
                                             accept=".pdf">
                                         <a href="" id="investorFile" target="_blank">View File</a>
                                     </div>
-                                    <span>File should be PDF only.</span>
+                                    <span style="color: red">(File should be PDF and max size 1mb only.)</span>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -208,74 +211,70 @@
 
         </section>
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <style>
-        .error
-        {
-         color:#FF0000;
-         display: block;
+        .error {
+            color: #FF0000;
+            display: block;
         }
-        </style>
+    </style>
     <script>
-        $(document).ready(function () {
-        $('#addRelease').validate({ // initialize the plugin
-            rules: {
-                release_category_id: {
-                    required: true
-                },
-                file_title: {
-                    required: true,
-                    email: true
-                },
-                invest_quater: {
-                    required: true,
+        $(document).ready(function() {
+            $('#addRelease').validate({ // initialize the plugin
+                rules: {
+                    release_category_id: {
+                        required: true
+                    },
+                    file_title: {
+                        required: true,
+                    },
+                    invest_quater: {
+                        required: true,
 
-                },
-                date: {
-                    required: true,
-                    minlength: 5
+                    },
+                    date: {
+                        required: true,
 
-                },
-                filename: {
-                    required: true,
-                    extension: "pdf"
-                },
+                    },
+                    filename: {
+                        required: true,
+                        extension: "pdf"
+                    },
 
 
-            }
+                }
+            });
         });
-    });
     </script>
     <script>
-        $(document).ready(function () {
-        $('#updateRelease').validate({ // initialize the plugin
-            rules: {
-                release_category_id: {
-                    required: true
-                },
-                file_title: {
-                    required: true,
-                    email: true
-                },
-                invest_quater: {
-                    required: true,
+        $(document).ready(function() {
+            $('#updateRelease').validate({ // initialize the plugin
+                rules: {
+                    release_category_id: {
+                        required: true
+                    },
+                    file_title: {
+                        required: true,
+                    },
+                    invest_quater: {
+                        required: true,
 
-                },
-                date: {
-                    required: true,
+                    },
+                    date: {
+                        required: true,
 
-                },
-                filename: {
-                    required: true,
-                    extension: "pdf"
-                },
+                    },
+                    filename: {
+                        required: true,
+                        extension: "pdf"
+                    },
 
 
-            }
+                }
+            });
         });
-    });
     </script>
 
     <script>

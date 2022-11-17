@@ -113,7 +113,8 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.center') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.center') }}" method="post" enctype="multipart/form-data"
+                            class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -131,7 +132,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email-1">Email</label>
-                                    <input type="text" class="form-control" name="email" value="{{ old('email') }}"
+                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}"
                                         required>
                                 </div>
                                 <div class="form-group">
@@ -190,7 +191,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.update.center') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.update.center') }}" method="post" enctype="multipart/form-data"
+                            class="ajaxForm">
 
                             @csrf
                             <input type="hidden" name="id" id="center_id">
@@ -261,7 +263,7 @@
 
         </section>
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
 
     <script>
         $(".js-edit-logo").on('click', function(e) {

@@ -90,7 +90,8 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.policy') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.policy') }}" method="post" enctype="multipart/form-data"
+                            class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -127,7 +128,8 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.edit.policy') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.edit.policy') }}" method="post" enctype="multipart/form-data"
+                            class="ajaxForm">
 
                             @csrf
                             <input type="hidden" name="policy_id" id="policy_id">
@@ -156,7 +158,7 @@
 
         </section>
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
 
     <script>
         $(".js-edit-logo").on('click', function(e) {

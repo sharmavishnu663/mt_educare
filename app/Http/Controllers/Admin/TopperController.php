@@ -53,7 +53,7 @@ class TopperController extends Controller
             }
 
             $success = Topper::create($requestData);
-            return Redirect::route('admin.topper')->with('success', 'Topper added successfully!');
+            return Redirect::route('admin.topper')->with('success', 'successfully submitted!');
         }
     }
 
@@ -86,7 +86,7 @@ class TopperController extends Controller
             }
 
             Topper::where('id', $request->id)->update($requestData);
-            return Redirect::route('admin.topper')->with('success', 'Topper updated successfully!');
+            return Redirect::route('admin.topper')->with('success', 'successfully submitted!');
         }
     }
 
@@ -94,6 +94,6 @@ class TopperController extends Controller
     public function deleteToppers($id)
     {
         Topper::where('id', $id)->delete();
-        return Redirect::route('admin.topper')->with('success', 'Topper delete successfully!');
+        return Redirect::route('admin.topper')->with('success', 'successfully submitted!');
     }
 }

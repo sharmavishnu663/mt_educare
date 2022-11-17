@@ -92,7 +92,8 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.add.gallary') }}" method="post" id="addGallary" enctype="multipart/form-data">
+                        <form action="{{ route('admin.add.gallary') }}" method="post" id="addGallary"
+                            enctype="multipart/form-data" class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -111,10 +112,10 @@
 
                                     <h6>File Input</h6>
                                     <div class="mb-0">
-                                        <input class="form-control" type="file" name="image"
-                                        id="image" accept="image/png, image/gif, image/jpeg" required>
+                                        <input class="form-control" type="file" name="image" id="image"
+                                            accept="image/png, image/gif, image/jpeg" required>
                                     </div>
-                                    <span>File should be PNG, GIF, JPEG only</span>
+                                    <span style="color: red">(File should be PNG, GIF, JPEG and 1mb only)</span>
 
                                 </div>
                             </div>
@@ -137,7 +138,8 @@
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('admin.edit.gallary') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.edit.gallary') }}" method="post" enctype="multipart/form-data"
+                            class="ajaxForm">
 
                             @csrf
                             <div class="modal-body">
@@ -155,6 +157,8 @@
                                     <div class="mb-0">
                                         <input class="form-control" type="file" name="image" id="image"
                                             accept="image/png, image/gif, image/jpeg" id="formFile">
+                                        <span style="color: red">(File should be PNG, GIF, JPEG and 1mb only)</span>
+
                                     </div>
                                     <img src="" id="gallary_image" width="25%">
                                 </div>
@@ -172,45 +176,44 @@
         </section>
         <!-- /.content -->
     </div>
-    <script src="{{ asset('../login/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/login/plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <style>
-        .error
-        {
-         color:#FF0000;
-         display: block;
+        .error {
+            color: #FF0000;
+            display: block;
         }
-        </style>
+    </style>
     <script>
-        $(document).ready(function () {
-        $('#addGallary').validate({ // initialize the plugin
-            rules: {
-                category_id: {
-                    required: true
-                },
-                gallary_image: {
-                    required: true,
-                },
+        $(document).ready(function() {
+            $('#addGallary').validate({ // initialize the plugin
+                rules: {
+                    category_id: {
+                        required: true
+                    },
+                    gallary_image: {
+                        required: true,
+                    },
 
-            }
+                }
+            });
         });
-    });
     </script>
     <script>
-        $(document).ready(function () {
-        $('#addGallary').validate({ // initialize the plugin
-            rules: {
-                category_id: {
-                    required: true
-                },
-                gallary_image: {
-                    required: true,
-                },
+        $(document).ready(function() {
+            $('#addGallary').validate({ // initialize the plugin
+                rules: {
+                    category_id: {
+                        required: true
+                    },
+                    gallary_image: {
+                        required: true,
+                    },
 
-            }
+                }
+            });
         });
-    });
     </script>
 
     <script>
